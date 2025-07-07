@@ -1,0 +1,363 @@
+/* Variables de couleur */
+:root {
+    --altiris-blue: #1a4b8c;
+    --altiris-light: #e9f0f7;
+    --altiris-accent: #f8b739;
+}
+
+/* Structure de base */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: var(--altiris-blue);
+    color: white;
+    min-height: 100vh;
+    position: fixed;
+    width: 250px;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 20px;
+    background-color: rgba(0,0,0,0.1);
+}
+
+.sidebar-header img {
+    max-width: 180px;
+}
+
+/* Navigation */
+.nav-link {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding: 10px 15px;
+    transition: all 0.3s;
+}
+
+.nav-link:hover, 
+.nav-link.active {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    text-decoration: none;
+}
+
+.nav-link i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Contenu principal */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+}
+
+/* Cartes */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    border: none;
+}
+
+.card-header {
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-weight: 600;
+    padding: 15px 20px;
+    border-radius: 10px 10px 0 0 !important;
+}
+
+/* Boutons */
+.btn-altiris {
+    background-color: var(--altiris-blue);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    transition: all 0.3s;
+}
+
+.btn-altiris:hover {
+    background-color: #0d3a73;
+    color: white;
+}
+
+/* Tableaux */
+.table th {
+    background-color: var(--altiris-light);
+    border-top: none;
+    font-weight: 600;
+}
+
+/* Profil utilisateur */
+.user-profile {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: auto;
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Badges */
+.badge {
+    padding: 5px 10px;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+        min-height: auto;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+
+/* back_office/css/custom.css */
+
+/* Correction du positionnement */
+body {
+    padding-top: 70px; /* Espace pour le header fixe */
+}
+
+.header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.main-content {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* Améliorations pour le tableau */
+.data-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.data-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+/* Pagination */
+.pagination-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* ==============================================
+   STYLE SPECIFIQUE PANNEAU ANNONCES
+   Fichier: back_office/css/custom.css
+   ============================================== */
+
+/* Container principal */
+.annonces-container {
+    padding: 20px;
+    background-color: #f8fafc;
+    min-height: calc(100vh - 70px);
+}
+
+/* En-tête de page */
+.annonces-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.annonces-title {
+    color: #1a365d;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* Boutons */
+.btn-annonce {
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-new {
+    background-color: #3182ce;
+    color: white;
+    border: none;
+}
+
+.btn-new:hover {
+    background-color: #2c5282;
+    transform: translateY(-2px);
+}
+
+.btn-action {
+    padding: 5px 10px;
+    margin-right: 5px;
+    font-size: 0.85rem;
+}
+
+/* Tableau des annonces */
+.table-annonces {
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.table-annonces thead {
+    background-color: #ebf8ff;
+}
+
+.table-annonces th {
+    padding: 15px;
+    color: #2d3748;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 2px solid #bee3f8;
+}
+
+.table-annonces td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #edf2f7;
+    vertical-align: middle;
+}
+
+.table-annonces tr:last-child td {
+    border-bottom: none;
+}
+
+.table-annonces tr:hover {
+    background-color: #f7fafc;
+}
+
+/* Badges de statut */
+.badge-statut {
+    padding: 5px 10px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-brouillon {
+    background-color: #e2e8f0;
+    color: #4a5568;
+}
+
+.badge-publie {
+    background-color: #c6f6d5;
+    color: #22543d;
+}
+
+.badge-archive {
+    background-color: #fed7d7;
+    color: #742a2a;
+}
+
+/* Zone de recherche */
+.search-box {
+    max-width: 300px;
+    position: relative;
+}
+
+.search-box input {
+    padding-left: 35px;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    color: #a0aec0;
+}
+
+/* Pagination */
+.pagination-annonces .page-item.active .page-link {
+    background-color: #3182ce;
+    border-color: #3182ce;
+}
+
+.pagination-annonces .page-link {
+    color: #3182ce;
+    margin: 0 5px;
+    border-radius: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .annonces-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .btn-new {
+        margin-top: 15px;
+        width: 100%;
+    }
+    
+    .search-box {
+        max-width: 100%;
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+    .table-annonces {
+        display: block;
+        overflow-x: auto;
+    }
+}
+/* deconnection login*/
+.btn-logout {
+    color: #dc3545;
+    transition: all 0.3s;
+}
+
+.btn-logout:hover {
+    color: #fff;
+    background-color: #dc3545;
+}
