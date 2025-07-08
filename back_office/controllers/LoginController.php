@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 // back_office/controllers/LoginController.php
 require_once(__DIR__ . '/BaseController.php');
 
@@ -60,4 +60,4 @@ if (method_exists($controller, $action)) {
 } else {
     die("Action non trouvée");
 }
-?>
+?> -->

@@ -1,8 +1,8 @@
 <?php
 // config/db.php
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root'); // À changer selon votre configuration
-define('DB_PASS', ''); // À changer selon votre configuration
+define('DB_USER', 'root');
+define('DB_PASS', ''); 
 define('DB_NAME', 'altiris_base');
 
 try {

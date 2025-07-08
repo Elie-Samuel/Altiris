@@ -1,0 +1,35 @@
+/* Logo dans la navbar */
+.navbar-brand img {
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand img:hover {
+    transform: scale(1.1);
+}
+
+/* Liens de navigation */
+.nav-link {
+    position: relative;
+    margin: 0 10px;
+    padding: 5px 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Espace pour la navbar fixe */
+.pt-5 {
+    padding-top: 6rem !important;
+}
