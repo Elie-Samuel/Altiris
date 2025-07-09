@@ -1,28 +1,23 @@
 <?php
-// root/bootstrap.php
+// D:\wamp64\www\Altiris\root\bootstrap.php
 
-// 1. Configuration de l'autoloader
 spl_autoload_register(function ($class) {
-    $directories = [
-        __DIR__.'/../Assets/config/frontoffice/models/',
-        __DIR__.'/frontoffice/models/',
-        __DIR__.'/frontoffice/controllers/'
-    ];
+    $prefix = 'Altiris\\FrontOffice\\';
+    $base_dir = __DIR__.'/frontoffice/';
     
-    foreach ($directories as $directory) {
-        $file = $directory . $class . '.php';
-        if (file_exists($file)) {
-            require_once $file;
-            return;
-        }
+    $len = strlen($prefix);
+    if (strncmp($prefix, $class, $len) !== 0) {
+        return;
+    }
+    
+    $relative_class = substr($class, $len);
+    $file = $base_dir.str_replace('\\', '/', $relative_class).'.php';
+    
+    if (file_exists($file)) {
+        require $file;
     }
 });
 
-// 2. Inclusion des fichiers CSS/JS (à faire dans le header, pas ici)
-// Cette partie est supprimée car elle doit être dans le template HTML
-// et non dans un fichier PHP pur
-
-// 3. Initialisation de la session si nécessaire
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
