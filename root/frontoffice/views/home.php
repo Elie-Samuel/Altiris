@@ -1,55 +1,66 @@
+<link href="/Altiris/root/frontoffice/css/style.css" rel="stylesheet">
 
-<section class="py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2>Ils nous font confiance</h2>
-            <p class="lead">Découvrez ce que nous sommes capables</p>
-        </div>
-        
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <?php foreach ($testimonials as $key => $testimonial): ?>
-                            <div class="carousel-item <?= $key === 0 ? 'active' : '' ?>">
-                                <div class="card border-0 shadow-none">
-                                    <div class="card-body text-center p-4">
-                                        <?php if (!empty($testimonial['image'])): ?>
-                                            <img src="data:image/jpeg;base64,<?= base64_encode($testimonial['image']) ?>" 
-                                                 class="rounded-circle mb-3" width="80" alt="Client">
-                                        <?php else: ?>
-                                            <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center mb-3 mx-auto" style="width:80px;height:80px;">
-                                                <i class="fas fa-user fa-2x"></i>
-                                            </div>
-                                        <?php endif; ?>
-                                        
-                                        <p class="lead fst-italic">"<?= htmlspecialchars($testimonial['text']) ?>"</p>
-                                        <div class="text-warning mb-2">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <!-- <h5 class="mb-1">Client satisfait</h5>
-                                        <p class="text-muted">Nos clients</p> -->
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                    
-                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon bg-dark rounded-circle"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon bg-dark rounded-circle"></span>
-                    </button>
-                </div>
+<!-- Section Témoignages version Base de Données -->
+<div class="database-testimonials">
+  <div class="db-header">
+    <h1><i class="fas fa-database"></i> Base de données : <?= DB_NAME ?></h1>
+    <h2><i class="fas fa-table"></i> Table : annonce</h2>
+  </div>
+
+  <div class="db-slider-container">
+    <?php if (!empty($testimonials)): ?>
+      <?php foreach ($testimonials as $key => $testimonial): ?>
+        <div class="db-slide <?= $key === 0 ? 'active' : '' ?>">
+          <div class="db-slide-image">
+            <?php if (!empty($testimonial['image'])): ?>
+              <img src="data:image/jpeg;base64,<?= base64_encode($testimonial['image']) ?>" 
+                   alt="Annonce <?= $testimonial['id'] ?>">
+            <?php else: ?>
+              <div class="db-default-avatar">
+                <i class="fas fa-user-tie"></i>
+              </div>
+            <?php endif; ?>
+          </div>
+          <div class="db-slide-content">
+            <div class="db-record-meta">
+              <span class="db-record-id">ID: <?= $testimonial['id'] ?></span>
+              <div class="db-rating">
+                <?php for ($i = 0; $i < 5; $i++): ?>
+                  <i class="fas fa-star"></i>
+                <?php endfor; ?>
+              </div>
             </div>
+            <div class="db-record-content">
+              <p>"<?= htmlspecialchars($testimonial['texte'] ?? '') ?>"</p>
+            </div>
+            <div class="db-record-footer">
+              <span class="db-client-type">Annonce vérifiée</span>
+              <span class="db-date"><?= date('Y-m-d') ?></span>
+            </div>
+          </div>
         </div>
+      <?php endforeach; ?>
+    <?php else: ?>
+      <div class="db-no-records">
+        <i class="fas fa-exclamation-circle"></i>
+        <p>Aucun enregistrement trouvé dans la table</p>
+      </div>
+    <?php endif; ?>
+  </div>
+
+  <?php if (count($testimonials) > 1): ?>
+    <div class="db-controls">
+      <button class="db-prev-btn"><i class="fas fa-chevron-left"></i> Précédent</button>
+      <button class="db-next-btn">Suivant <i class="fas fa-chevron-right"></i></button>
     </div>
-</section>
+
+    <div class="db-pagination">
+      <?php for ($i = 0; $i < count($testimonials); $i++): ?>
+        <span class="db-dot <?= $i === 0 ? 'active' : '' ?>"></span>
+      <?php endfor; ?>
+    </div>
+  <?php endif; ?>
+</div>
 
 
 <section class="py-5 bg-light">
@@ -126,53 +137,45 @@
         </div>
         
         <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="/Altiris/Assets/images/news1.jpg" class="card-img-top" alt="Actualité 1">
-                    <div class="card-body">
-                        <div class="d-flex mb-2">
-                            <small class="text-muted"><i class="far fa-calendar me-1"></i> 15 Juillet 2023</small>
+            <?php if (!empty($actualites)): ?>
+                <?php foreach ($actualites as $actualite): ?>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <?php if (!empty($actualite['image'])): ?>
+                                <img src="data:image/jpeg;base64,<?= base64_encode($actualite['image']) ?>" 
+                                     class="card-img-top" 
+                                     alt="Actualité <?= $actualite['id'] ?>">
+                            <?php else: ?>
+                                <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" 
+                                     style="height: 200px;">
+                                    <i class="far fa-newspaper fa-4x"></i>
+                                </div>
+                            <?php endif; ?>
+                            
+                            <div class="card-body">
+                                <div class="d-flex mb-2">
+                                    <small class="text-muted">
+                                        <i class="far fa-calendar me-1"></i> 
+                                        <?= $actualite['date_formatee'] ?? 'Date non disponible' ?>
+                                    </small>
+                                </div>
+                                <h5 class="card-title"><?= htmlspecialchars($actualite['titre'] ?? 'Titre non disponible') ?></h5>
+                                <p class="card-text"><?= htmlspecialchars(substr($actualite['texte'], 0, 100) . '...' ?? 'Description non disponible') ?></p>
+                            </div>
+                            <div class="card-footer bg-transparent border-top-0">
+                                <a href="/Altiris/root/frontoffice/actualite?id=<?= $actualite['id'] ?>" 
+                                   class="btn btn-sm btn-outline-primary">
+                                   Lire la suite
+                                </a>
+                            </div>
                         </div>
-                        <h5 class="card-title">Lancement de notre nouvelle plateforme</h5>
-                        <p class="card-text">Découvrez notre nouvelle solution tout-en-un pour la gestion d'entreprise.</p>
                     </div>
-                    <div class="card-footer bg-transparent border-top-0">
-                        <a href="#" class="btn btn-sm btn-outline-primary">Lire la suite</a>
-                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="col-12 text-center">
+                    <div class="alert alert-info">Aucune actualité disponible pour le moment.</div>
                 </div>
-            </div>
-            
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="/Altiris/Assets/images/news2.jpg" class="card-img-top" alt="Actualité 2">
-                    <div class="card-body">
-                        <div class="d-flex mb-2">
-                            <small class="text-muted"><i class="far fa-calendar me-1"></i> 28 Juin 2023</small>
-                        </div>
-                        <h5 class="card-title">Ateliers de formation gratuits</h5>
-                        <p class="card-text">Inscrivez-vous à nos prochains ateliers de formation sur les nouvelles technologies.</p>
-                    </div>
-                    <div class="card-footer bg-transparent border-top-0">
-                        <a href="#" class="btn btn-sm btn-outline-primary">Lire la suite</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="/Altiris/Assets/images/news3.jpg" class="card-img-top" alt="Actualité 3">
-                    <div class="card-body">
-                        <div class="d-flex mb-2">
-                            <small class="text-muted"><i class="far fa-calendar me-1"></i> 10 Juin 2023</small>
-                        </div>
-                        <h5 class="card-title">Partenariat stratégique</h5>
-                        <p class="card-text">Nous sommes fiers d'annoncer notre nouveau partenariat avec TechSolutions.</p>
-                    </div>
-                    <div class="card-footer bg-transparent border-top-0">
-                        <a href="#" class="btn btn-sm btn-outline-primary">Lire la suite</a>
-                    </div>
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
         
         <div class="text-center mt-4">
@@ -180,3 +183,65 @@
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.db-slide');
+  const dots = document.querySelectorAll('.db-dot');
+  const prevBtn = document.querySelector('.db-prev-btn');
+  const nextBtn = document.querySelector('.db-next-btn');
+  let currentIndex = 0;
+
+  function updateSlider() {
+    slides.forEach((slide, index) => {
+      slide.style.transform = `translateX(-${currentIndex * 100}%)`;
+      slide.classList.toggle('active', index === currentIndex);
+    });
+    
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateSlider();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateSlider();
+  }
+
+  // Boutons navigation
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+  // Dots navigation
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentIndex = index;
+      updateSlider();
+    });
+  });
+
+  // Auto-play (optionnel)
+  const autoplayInterval = setInterval(nextSlide, 7000);
+  
+  // Pause on hover
+  const slider = document.querySelector('.db-slider-container');
+  if (slider) {
+    slider.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+    slider.addEventListener('mouseleave', () => {
+      clearInterval(autoplayInterval);
+      autoplayInterval = setInterval(nextSlide, 7000);
+    });
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+});
+</script>

@@ -1,6 +1,5 @@
 <?php
-// D:\wamp64\www\Altiris\root\bootstrap.php
-
+// Assurez-vous que l'autoloader est correctement configuré
 spl_autoload_register(function ($class) {
     $prefix = 'Altiris\\FrontOffice\\';
     $base_dir = __DIR__.'/frontoffice/';
@@ -17,7 +16,3 @@ spl_autoload_register(function ($class) {
         require $file;
     }
 });
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}

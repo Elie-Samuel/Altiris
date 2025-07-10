@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-uf fixed-top">
         <div class="container">
             <a class="navbar-brand" href="/Altiris/root/frontoffice/home">
-                <img src="/Altiris/Assets/images/logo_Altirys.png" alt="Logo ALTRIS" class="logo-rounded" height="100" width="100">
+                <img src="<!-- /Altiris -->/Assets/Images/logo_Altirys.png" alt="Logo ALTIRYS" class="logo-rounded" height="50" width="50">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -46,7 +46,7 @@
             </div>
         </div>
     </nav>
-    <div class="pt-5 mt-3"> <!-- Espace pour la navbar fixe -->
+    <div class="pt-5 mt-3">
 
     <script>
     // Navbar Scroll Effect
