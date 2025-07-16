@@ -1,6 +1,4 @@
 <?php
-// D:\wamp64\www\Altiris\root\frontoffice\models\TestimonialModel.php
-
 namespace Altiris\FrontOffice\Models;
 
 class TestimonialModel {
@@ -10,36 +8,40 @@ class TestimonialModel {
         $this->db = $db;
     }
 
-    public function getAllTestimonials() {
-        $testimonials = [];
-        
-        // Récupération depuis les 5 tables
-        for ($i = 1; $i <= 5; $i++) {
-            $table = "image_acceuille_$i";
-            try {
-                $query = "SELECT image, text FROM $table LIMIT 1";
-                $stmt = $this->db->prepare($query);
-                $stmt->execute();
-                
-                if ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                    $testimonials[] = [
-                        'image' => $row['image'],
-                        'text' => $row['text']
-                    ];
-                }
-            } catch (\PDOException $e) {
-                error_log("Erreur témoignage table $table: " . $e->getMessage());
-            }
+    public function getAllAnnouncements() {
+        try {
+            $query = "SELECT id, image, text FROM annonce ORDER BY id DESC";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            
+            $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            
+            return array_map([$this, 'processAnnouncement'], $results);
+            
+        } catch (\PDOException $e) {
+            error_log("Erreur getAllAnnouncements: " . $e->getMessage());
+            return [];
         }
+    }
+
+    private function processAnnouncement($announcement) {
+        return [
+            'id' => $announcement['id'],
+            'image' => $this->processImage($announcement['image']),
+            'content' => $announcement['text'],
+            'lines' => $this->processContent($announcement['text'])
+        ];
+    }
+
+    private function processImage($imageData) {
+        if (empty($imageData)) return null;
         
-        // Si moins de 2 témoignages, ajoute des valeurs par défaut
-        while (count($testimonials) < 2) {
-            $testimonials[] = [
-                'image' => null,
-                'text' => 'Témoignage par défaut - Excellent service client!'
-            ];
-        }
-        
-        return $testimonials;
+        // Si c'est un BLOB
+        return 'data:image/jpeg;base64,' . base64_encode($imageData);
+    }
+
+    private function processContent($content) {
+        $lines = explode("\n", $content);
+        return array_filter(array_map('trim', $lines));
     }
 }

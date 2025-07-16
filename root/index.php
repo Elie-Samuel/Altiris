@@ -17,51 +17,55 @@ if (!preg_match('/^[a-z]+$/', $page)) {
 }
 
 // Gestion des routes spéciales
-if ($page === 'actualite') {
-    $controller = new \Altiris\FrontOffice\Controllers\ActualiteController($db);
-    $controller->show();
+$specialRoutes = ['actualite', 'contact', 'home']; // Ajout de 'home' ici
+if (in_array($page, $specialRoutes)) {
+    switch ($page) {
+        case 'actualite':
+            $controller = new \Altiris\FrontOffice\Controllers\ActualiteController($db);
+            $controller->show();
+            break;
+            
+        case 'contact':
+            $controller = new \Altiris\FrontOffice\Controllers\ContactController($db);
+            if (isset($_GET['action']) && $_GET['action'] === 'submit') {
+                $controller->submit();
+            } else {
+                $controller->index();
+            }
+            break;
+            
+        case 'home': // Gestion spécifique de la home
+            $controller = new \Altiris\FrontOffice\Controllers\HomeController($db);
+            $controller->index();
+            break;
+    }
     exit;
 }
 
-// Route standard
+// Route standard (pour les autres pages)
 $controllerClass = 'Altiris\\FrontOffice\\Controllers\\'.ucfirst($page).'Controller';
 $controllerFile = __DIR__.'/frontoffice/controllers/'.ucfirst($page).'Controller.php';
 
 try {
-    // Vérification du contrôleur
     if (!file_exists($controllerFile)) {
         throw new Exception("Contrôleur $page non trouvé");
     }
 
     require_once $controllerFile;
 
-    // Vérification de la classe
     if (!class_exists($controllerClass)) {
         throw new Exception("Classe $controllerClass introuvable");
     }
 
-    // Vérification connexion DB
-    if (!isset($db) || !($db instanceof PDO)) {
-        throw new Exception("Erreur de connexion à la base de données");
-    }
-
-    // Instanciation et exécution
     $controller = new $controllerClass($db);
     
-    if ($page === 'actualite') {
-        if (!method_exists($controller, 'show')) {
-            throw new Exception("Méthode show() manquante");
-        }
-        $controller->show();
-    } else {
-        if (!method_exists($controller, 'index')) {
-            throw new Exception("Méthode index() manquante");
-        }
-        $controller->index();
+    if (!method_exists($controller, 'index')) {
+        throw new Exception("Méthode index() manquante");
     }
+    
+    $controller->index();
 
 } catch (Exception $e) {
-    // Gestion des erreurs
     error_log('Erreur routage: ' . $e->getMessage());
     
     if (ini_get('display_errors')) {

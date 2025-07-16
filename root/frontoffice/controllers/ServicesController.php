@@ -1,20 +1,21 @@
 <?php
+namespace Altiris\FrontOffice\Controllers;
+
+use Altiris\FrontOffice\Models\ServiceModel;
+
 class ServicesController {
-    private $db;
-    private $serviceModel;
-    
+    private $model;
+
     public function __construct($db) {
-        $this->db = $db;
-        $this->serviceModel = new ServiceModel($db);
+        $this->model = new ServiceModel($db);
     }
-    
+
     public function index() {
-        // Récupérer les services depuis la base de données
-        $services = $this->serviceModel->getAllServices();
+        $services = $this->model->getAllServices();
         
-        // Charger la vue
-        require_once __DIR__.'/../views/partials/header.php';
-        require_once __DIR__.'/../views/services.php';
-        require_once __DIR__.'/../views/partials/footer.php';
+        // Debug (à supprimer en production)
+        echo '<pre>'; print_r($services); echo '</pre>';
+        
+        require __DIR__.'/../views/services.php';
     }
 }

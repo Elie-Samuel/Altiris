@@ -1,117 +1,140 @@
-<link href="/Altiris/root/frontoffice/css/style.css" rel="stylesheet">
+<link href="/Altiris/root/frontoffice/css/announcements.css" rel="stylesheet">
+<link href="/Altiris/root/frontoffice/css/testimonials.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 
-<!-- Section Témoignages version Base de Données -->
-<div class="database-testimonials">
-  <div class="db-header">
-    <h1><i class="fas fa-database"></i> Base de données : <?= DB_NAME ?></h1>
-    <h2><i class="fas fa-table"></i> Table : annonce</h2>
-  </div>
 
-  <div class="db-slider-container">
-    <?php if (!empty($testimonials)): ?>
-      <?php foreach ($testimonials as $key => $testimonial): ?>
-        <div class="db-slide <?= $key === 0 ? 'active' : '' ?>">
-          <div class="db-slide-image">
-            <?php if (!empty($testimonial['image'])): ?>
-              <img src="data:image/jpeg;base64,<?= base64_encode($testimonial['image']) ?>" 
-                   alt="Annonce <?= $testimonial['id'] ?>">
-            <?php else: ?>
-              <div class="db-default-avatar">
-                <i class="fas fa-user-tie"></i>
-              </div>
+
+<!-- Section Slider Annonces -->
+<?php if (!empty($announcements)): ?>
+<div class="announcements-slider">
+    <?php foreach ($announcements as $announcement): ?>
+        <div class="announcement-item">
+            <?php if (!empty($announcement['image'])): ?>
+                <img src="<?= $announcement['image'] ?>" alt="Annonce">
             <?php endif; ?>
-          </div>
-          <div class="db-slide-content">
-            <div class="db-record-meta">
-              <span class="db-record-id">ID: <?= $testimonial['id'] ?></span>
-              <div class="db-rating">
-                <?php for ($i = 0; $i < 5; $i++): ?>
-                  <i class="fas fa-star"></i>
-                <?php endfor; ?>
-              </div>
+            <div class="announcement-text">
+                <?php foreach ($announcement['lines'] as $line): ?>
+                    <p><?= htmlspecialchars($line) ?></p>
+                <?php endforeach; ?>
             </div>
-            <div class="db-record-content">
-              <p>"<?= htmlspecialchars($testimonial['texte'] ?? '') ?>"</p>
-            </div>
-            <div class="db-record-footer">
-              <span class="db-client-type">Annonce vérifiée</span>
-              <span class="db-date"><?= date('Y-m-d') ?></span>
-            </div>
-          </div>
         </div>
-      <?php endforeach; ?>
-    <?php else: ?>
-      <div class="db-no-records">
-        <i class="fas fa-exclamation-circle"></i>
-        <p>Aucun enregistrement trouvé dans la table</p>
-      </div>
-    <?php endif; ?>
-  </div>
-
-  <?php if (count($testimonials) > 1): ?>
-    <div class="db-controls">
-      <button class="db-prev-btn"><i class="fas fa-chevron-left"></i> Précédent</button>
-      <button class="db-next-btn">Suivant <i class="fas fa-chevron-right"></i></button>
-    </div>
-
-    <div class="db-pagination">
-      <?php for ($i = 0; $i < count($testimonials); $i++): ?>
-        <span class="db-dot <?= $i === 0 ? 'active' : '' ?>"></span>
-      <?php endfor; ?>
-    </div>
-  <?php endif; ?>
+    <?php endforeach; ?>
 </div>
+<div class="slide-indicators">
+    <?php foreach ($announcements as $index => $announcement): ?>
+        <div class="slide-indicator <?= $index === 0 ? 'active' : '' ?>" 
+             data-index="<?= $index ?>"></div>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Animation des annonces
+    gsap.from('.announcement-line', {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        stagger: 0.3,
+        delay: 0.5
+    });
 
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2>Nos Services Phares</h2>
-            <p class="lead">Découvrez nos solutions clés pour votre entreprise</p>
-        </div>
+    // Slider annonces
+    const slider = document.querySelector('.announcements-slider');
+    if (slider) {
+        let currentIndex = 0;
+        const items = slider.querySelectorAll('.announcement-item');
+        const indicators = document.querySelectorAll('.slide-indicator');
+        const totalItems = items.length;
+
+        function updateSlider() {
+            // Masquer tous les éléments
+            items.forEach(item => item.style.display = 'none');
+            indicators.forEach(ind => ind.classList.remove('active'));
+            
+            // Afficher l'élément courant
+            items[currentIndex].style.display = 'block';
+            indicators[currentIndex].classList.add('active');
+        }
+
+        function nextItem() {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateSlider();
+        }
+
+        // Gestion des indicateurs
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                currentIndex = parseInt(indicator.dataset.index);
+                updateSlider();
+            });
+        });
+
+        // Auto-scroll
+        const interval = setInterval(nextItem, 5000);
         
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center p-4">
-                        <div class="icon-square bg-primary bg-gradient text-white rounded-circle mb-3 mx-auto" style="width: 60px; height: 60px; line-height: 60px;">
-                            <i class="fas fa-cog fa-lg"></i>
-                        </div>
-                        <h4>Solution Technique</h4>
-                        <p class="text-muted">Des solutions techniques sur mesure pour répondre à vos besoins spécifiques.</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">En savoir plus</a>
-                    </div>
-                </div>
+        // Pause au survol
+        slider.addEventListener('mouseenter', () => clearInterval(interval));
+        slider.addEventListener('mouseleave', () => {
+            clearInterval(interval);
+            interval = setInterval(nextItem, 5000);
+        });
+
+        updateSlider();
+    }
+});
+</script>
+
+
+
+
+<!-- Section Services -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Nos Services Phares</h2>
+                <p class="lead">Découvrez nos solutions clés pour votre entreprise</p>
             </div>
             
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center p-4">
-                        <div class="icon-square bg-success bg-gradient text-white rounded-circle mb-3 mx-auto" style="width: 60px; height: 60px; line-height: 60px;">
-                            <i class="fas fa-chart-line fa-lg"></i>
+            <div class="row g-4">
+                <?php if (!empty($services)): ?>
+                    <?php 
+                    // Définir les couleurs pour chaque service (sans icônes)
+                    $serviceColors = [
+                        'primary',
+                        'success',
+                        'info'
+                    ];
+                    $index = 0;
+                    ?>
+                    
+                    <?php foreach ($services as $service): ?>
+                        <?php 
+                        $color = $serviceColors[$index % count($serviceColors)];
+                        $index++;
+                        ?>
+                        
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body text-center p-4">
+                                    <h4><?= htmlspecialchars($service['titre'] ?? 'Service') ?></h4>
+                                    <?php if (!empty($service['image'])): ?>
+                                        <img src="data:image/jpeg;base64,<?= base64_encode($service['image']) ?>" class="img-fluid mb-3" alt="Image service">
+                                    <?php endif; ?>
+                                    <p class="text-muted"><?= htmlspecialchars($service['texte'] ?? 'Description du service') ?></p>
+                                    <a href="#" class="btn btn-outline-<?= $color ?> btn-sm">En savoir plus</a>
+                                </div>
+                            </div>
                         </div>
-                        <h4>Analyse de Données</h4>
-                        <p class="text-muted">Transformez vos données en informations exploitables pour votre business.</p>
-                        <a href="#" class="btn btn-outline-success btn-sm">En savoir plus</a>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="col-12 text-center">
+                        <div class="alert alert-info">Aucun service disponible pour le moment.</div>
                     </div>
-                </div>
-            </div>
-            
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center p-4">
-                        <div class="icon-square bg-info bg-gradient text-white rounded-circle mb-3 mx-auto" style="width: 60px; height: 60px; line-height: 60px;">
-                            <i class="fas fa-users fa-lg"></i>
-                        </div>
-                        <h4>Formation</h4>
-                        <p class="text-muted">Formez vos équipes aux dernières technologies et méthodologies.</p>
-                        <a href="#" class="btn btn-outline-info btn-sm">En savoir plus</a>
-                    </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <!-- Section Contact rapide -->
 <section class="py-5 bg-primary text-white">
@@ -127,6 +150,7 @@
         </div>
     </div>
 </section>
+
 
 <!-- Section Actualités -->
 <section class="py-5">
@@ -144,7 +168,8 @@
                             <?php if (!empty($actualite['image'])): ?>
                                 <img src="data:image/jpeg;base64,<?= base64_encode($actualite['image']) ?>" 
                                      class="card-img-top" 
-                                     alt="Actualité <?= $actualite['id'] ?>">
+                                     alt="Actualité <?= $actualite['id'] ?>"
+                                     style="height: 200px; object-fit: cover;">
                             <?php else: ?>
                                 <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" 
                                      style="height: 200px;">
@@ -156,11 +181,11 @@
                                 <div class="d-flex mb-2">
                                     <small class="text-muted">
                                         <i class="far fa-calendar me-1"></i> 
-                                        <?= $actualite['date_formatee'] ?? 'Date non disponible' ?>
+                                        <?= htmlspecialchars($actualite['date_formatee']) ?>
                                     </small>
                                 </div>
-                                <h5 class="card-title"><?= htmlspecialchars($actualite['titre'] ?? 'Titre non disponible') ?></h5>
-                                <p class="card-text"><?= htmlspecialchars(substr($actualite['texte'], 0, 100) . '...' ?? 'Description non disponible') ?></p>
+                                <h5 class="card-title"><?= htmlspecialchars($actualite['titre']) ?></h5>
+                                <p class="card-text"><?= htmlspecialchars(mb_substr($actualite['texte'], 0, 100)) ?><?= (mb_strlen($actualite['texte']) > 100) ? '...' : '' ?></p>
                             </div>
                             <div class="card-footer bg-transparent border-top-0">
                                 <a href="/Altiris/root/frontoffice/actualite?id=<?= $actualite['id'] ?>" 
@@ -173,17 +198,21 @@
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="col-12 text-center">
-                    <div class="alert alert-info">Aucune actualité disponible pour le moment.</div>
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Problème de chargement des actualités. Veuillez réessayer plus tard.
+                    </div>
                 </div>
             <?php endif; ?>
         </div>
         
         <div class="text-center mt-4">
-            <a href="/Altiris/root/frontoffice/actualites" class="btn btn-outline-primary">Voir toutes les actualités</a>
+            <a href="/Altiris/root/frontoffice/actualites" class="btn btn-outline-primary">
+                <i class="fas fa-newspaper me-2"></i> Voir toutes les actualités
+            </a>
         </div>
     </div>
 </section>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const slides = document.querySelectorAll('.db-slide');

@@ -45,7 +45,7 @@
     backdrop-filter: blur(8px);
 }
 
-/* Logo */
+/* /* Logo */
 .logo-container {
     position: relative;
     width: 70px;
@@ -84,7 +84,7 @@
     height: auto;
     transition: transform 0.3s ease;
     filter: brightness(0) invert(1);
-}
+} */
 
 /* Navigation*/
 .navbar-uf .navbar-nav {
@@ -424,3 +424,4 @@
     height: auto;
   }
 }
+

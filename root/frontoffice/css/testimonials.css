@@ -1,0 +1,139 @@
+/* Thème Principal */
+body {
+    background-color: #0C0C2B;
+    color: #FFFFFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Typographie */
+h1, h2, h3, h4, h5, h6 {
+    color: #FFFFFF;
+}
+
+.lead {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Cartes */
+.card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    color: #FFFFFF !important;
+}
+
+.text-muted {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Sections */
+.bg-light {
+    background-color: #1A1A3D !important;
+}
+
+.bg-primary {
+    background-color: #1E90FF !important;
+}
+
+.bg-secondary {
+    background-color: #2A2A5A !important;
+}
+
+/* Boutons */
+.btn-outline-primary {
+    border-color: #1E90FF;
+    color: #1E90FF;
+}
+
+.btn-outline-primary:hover {
+    background-color: #1E90FF;
+    color: #0C0C2B;
+}
+
+.btn-light {
+    background-color: #FFFFFF;
+    color: #0C0C2B;
+}
+
+.btn-light:hover {
+    background-color: #F0F0F0;
+    color: #0C0C2B;
+}
+
+/* Alertes */
+.alert-info {
+    background-color: rgba(30, 144, 255, 0.2);
+    border-color: #1E90FF;
+    color: #FFFFFF;
+}
+
+/* Slider Annonces */
+.announcements-slider {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+}
+
+.announcement-item {
+    color: #FFFFFF;
+}
+
+/* Icônes */
+.icon-square {
+    background-color: #1E90FF;
+    color: #FFFFFF;
+}
+
+/* Images */
+.card-img-top {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animation GSAP */
+.announcement-line {
+    color: #FFFFFF;
+}
+
+/* Navigation */
+.navbar {
+    background-color: #000000;
+}
+
+/* Transitions */
+a, button {
+    transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+
+/* Nouvelle couleur pour les sections "primary" */
+.bg-primary {
+    background-color: #1A1549 !important;
+}
+
+/* Adaptation du bouton pour mieux contraster */
+.bg-primary .btn-light {
+    background-color: #FFFFFF;
+    color: #1A1549;
+    border: 2px solid #FFFFFF;
+}
+
+.bg-primary .btn-light:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #1A1549;
+}
