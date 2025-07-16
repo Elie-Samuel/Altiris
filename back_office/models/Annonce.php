@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 require_once dirname(__DIR__, 2) . '/config/db.php';
 
 class Annonce {
@@ -77,6 +78,24 @@ class Annonce {
             error_log("Erreur lors de la suppression : " . $e->getMessage());
             return false;
         }
+=======
+class Annonce {
+    private $pdo;
+
+    public function __construct($pdo) {
+        $this->pdo = $pdo;
+    }
+
+    public function all() {
+        $stmt = $this->pdo->query("SELECT * FROM annonces");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function find($id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM annonces WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+>>>>>>> e094eeb8efa2873c0981c539bb3c64d9e64feb63
     }
 }
 ?>
