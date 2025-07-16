@@ -1,8 +1,8 @@
 <?php
-namespace Altiris\root\frontOffice\Controllers;
+namespace Altiris\FrontOffice\Controllers;
 
-use Altiris\root\frontOffice\Models\ImageModel;
-use Altiris\root\frontOffice\Models\TestimonialModel;
+use Altiris\FrontOffice\Models\ImageModel;
+use Altiris\FrontOffice\Models\TestimonialModel;
 use PDO;
 use PDOException;
 

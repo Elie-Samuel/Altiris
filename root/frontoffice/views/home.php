@@ -1,5 +1,5 @@
 <link href="/Altiris/root/frontoffice/css/announcements.css" rel="stylesheet">
-<link href="/Altiris/root/frontoffice/css/testimonials.css" rel="stylesheet">
+<!-- <link href="/Altiris/root/frontoffice/css/testimonials.css" rel="stylesheet"> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 
 
