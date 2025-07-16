@@ -1,0 +1,314 @@
+body {
+    background-color: #121293;
+    color: #f8f9fa;
+    margin-left: 200px; /* Espace pour la sidebar */
+    padding: 20px;
+}
+
+/* Search bar */
+.navbar {
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.search-bar {
+    position: relative;
+    margin-right: 20px;
+    min-width: 200px;
+}
+.search-bar input.form-control {
+    padding-right: 30px;
+    width: 300px;
+    background-color: #2c3e50;
+    border: none;
+    color: #ffffff;
+}
+.search-bar input.form-control::placeholder {
+    color: #adb5bd;
+}
+.search-bar .fas {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #adb5bd;
+}
+.search-bar input::placeholder {
+    color: #ffffff !important; /* Texte "Rechercher..." en blanc */
+}
+.search-bar .fa-search {
+    color: #ffffff !important; /* Icône de recherche en blanc */
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    background-color: #0d0d3a;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+.sidebar .nav-link {
+    color: #f8f9fa !important;
+    padding: 10px 20px;
+    display: block;
+}
+.sidebar .nav-link:hover {
+    background-color: #273442;
+    color: #adb5bd !important;
+}
+
+/* Container */
+.container {
+    background-color: #071728;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Navbar brand */
+.navbar-brand {
+    color: #f8f9fa !important;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+.navbar-brand .logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Headings */
+h2 {
+    color: #f8f9fa;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Styles pour les cartes avec animations */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+.card {
+    background-color: #0c141e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fade-in-up 0.6s ease-out backwards;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Animation d'entrée pour les cartes */
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Décalage pour chaque carte */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(n+4) { animation-delay: 0.4s; }
+.card:hover {
+    transform: translateY(-5px) rotate(1deg);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+.card-header {
+    background-color: #1a2b3c;
+    padding: 10px;
+    font-weight: 500;
+    color: #ffffff; /* Texte ID en blanc */
+}
+.card-body {
+    padding: 15px;
+}
+.card-body p {
+    margin: 0 0 10px;
+    word-wrap: break-word;
+    color: #ffffff; /* Texte en blanc */
+}
+.card-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #273442;
+    transition: transform 0.3s ease;
+}
+.card-image img:hover {
+    transform: scale(1.05);
+}
+.card-actions {
+    padding: 10px;
+    background-color: #0d1a26;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Styles pour les cartes de contacts (index.php) */
+.contact-card {
+    background-color: #032a5a; /* Fond sombre cohérent avec .card */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fade-in-up 0.6s ease-out backwards;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: #ffffff; /* Texte blanc par défaut */
+}
+.contact-card:hover {
+    transform: translateY(-5px) rotate(1deg); /* Même effet que .card */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+.contact-card .contact-info {
+    margin-bottom: 10px;
+}
+.contact-card .contact-info label {
+    color: #ffffff; /* Labels ID, Adresse, Email, Téléphone, Lien Facebook, Date de création en blanc */
+    font-weight: bold; /* Maintien du style gras */
+}
+.contact-card .contact-info > *:not(label) {
+    color: #ffffff; /* Valeurs associées (id_ent, adresse, mail, etc.) en blanc */
+}
+
+/* Styles pour le formulaire d'édition */
+.form-container {
+    background-color: #0c141e;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #ffffff; /* Texte général dans le conteneur en blanc */
+}
+.form-label {
+    color: #ffffff; /* Labels en blanc */
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+.form-control {
+    background-color: #0d1a26;
+    border: 1px solid #273442;
+    color: #ffffff; /* Texte des champs de formulaire en blanc */
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+    outline: none;
+}
+.form-control::placeholder {
+    color: #adb5bd; /* Placeholder en gris clair pour contraste */
+}
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+.form-control[type="file"] {
+    color: #ffffff; /* Texte du champ de fichier en blanc */
+}
+.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: #0a58ca;
+    transform: translateY(-2px);
+}
+.btn-warning, .btn-danger {
+    border-radius: 4px;
+    padding: 6px 12px;
+    transition: all 0.3s ease;
+}
+.btn-warning {
+    background-color: #f0ad4e;
+    border: none;
+}
+.btn-warning:hover {
+    background-color: #ec971f;
+    transform: scale(1.1) rotate(-1deg);
+}
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+.btn-danger:hover {
+    background-color: #bb2d3b;
+    transform: scale(1.1) rotate(-1deg);
+}
+
+/* Styles pour les cartes de membres (index.php) */
+.member-card {
+    background-color: #032a5a; /* Fond sombre cohérent avec .card */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fade-in-up 0.6s ease-out backwards;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: #ffffff; /* Texte blanc */
+}
+.member-card:hover {
+    transform: translateY(-5px) rotate(1deg); /* Même effet que .card */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+.member-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #273442; /* Bordure sombre cohérente */
+    transition: transform 0.3s ease;
+}
+.member-card img:hover {
+    transform: scale(1.05); /* Même effet que .card-image img */
+}
+.member-card .card-body {
+    padding: 15px;
+}
+.member-card .badge {
+    font-size: 0.9em;
+    background-color: #6c757d; /* Gris sombre pour inactif */
+    color: #ffffff;
+}
+.member-card .badge.bg-success {
+    background-color: #28a745 !important; /* Vert pour actif */
+}
+.member-card .badge.bg-secondary {
+    background-color: #6c757d !important; /* Gris pour inactif */
+}
+.member-info {
+    margin-bottom: 10px;
+}
+.member-info label {
+    font-weight: bold;
+    color: #adb5bd; /* Gris clair pour labels, cohérent avec .form-control::placeholder */
+}
+.no-photo {
+    width: 100px;
+    height: 100px;
+    background-color: #0d1a26; /* Fond sombre cohérent avec .form-control */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd; /* Texte gris clair */
+    font-size: 0.9em;
+    text-align: center;
+    border: 2px solid #273442; /* Bordure cohérente */
+}
