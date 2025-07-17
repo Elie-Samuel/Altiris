@@ -1,0 +1,760 @@
+[16-Jul-2025 13:14:18 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[16-Jul-2025 13:14:18 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[16-Jul-2025 13:14:18 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[16-Jul-2025 13:14:18 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[16-Jul-2025 13:14:18 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[16-Jul-2025 13:14:18 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[16-Jul-2025 13:14:18 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[16-Jul-2025 13:14:18 UTC] PHP Stack trace:
+[16-Jul-2025 13:14:18 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[16-Jul-2025 13:14:18 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[16-Jul-2025 13:14:18 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[16-Jul-2025 13:14:18 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[16-Jul-2025 13:14:18 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[16-Jul-2025 13:14:18 UTC] PHP Stack trace:
+[16-Jul-2025 13:14:18 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[16-Jul-2025 13:14:18 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[16-Jul-2025 13:14:18 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[16-Jul-2025 13:14:18 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[16-Jul-2025 13:14:18 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[16-Jul-2025 13:14:18 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[16-Jul-2025 13:14:18 UTC] PHP Stack trace:
+[16-Jul-2025 13:14:18 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[16-Jul-2025 13:14:18 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[16-Jul-2025 13:14:18 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[16-Jul-2025 13:14:18 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[16-Jul-2025 13:14:18 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[16-Jul-2025 13:14:18 UTC] PHP Stack trace:
+[16-Jul-2025 13:14:18 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[16-Jul-2025 13:14:18 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[16-Jul-2025 13:14:18 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[16-Jul-2025 13:14:18 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[16-Jul-2025 13:14:18 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[16-Jul-2025 13:14:18 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[16-Jul-2025 13:14:18 UTC] PHP Stack trace:
+[16-Jul-2025 13:14:18 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[16-Jul-2025 13:14:18 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[16-Jul-2025 13:14:18 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[16-Jul-2025 13:14:18 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[16-Jul-2025 13:14:18 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[16-Jul-2025 13:14:18 UTC] PHP Stack trace:
+[16-Jul-2025 13:14:18 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[16-Jul-2025 13:14:18 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[16-Jul-2025 13:14:18 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[16-Jul-2025 13:14:18 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[16-Jul-2025 13:14:18 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:40:57 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 09:40:57 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 09:40:57 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 09:40:57 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 09:40:57 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 09:40:57 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 09:40:57 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:40:57 UTC] PHP Stack trace:
+[17-Jul-2025 09:40:57 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:40:57 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:40:57 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:40:57 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:40:57 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:40:57 UTC] PHP Stack trace:
+[17-Jul-2025 09:40:57 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:40:57 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:40:57 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:40:57 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:40:57 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:40:57 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:40:57 UTC] PHP Stack trace:
+[17-Jul-2025 09:40:57 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:40:57 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:40:57 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:40:57 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:40:57 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:40:57 UTC] PHP Stack trace:
+[17-Jul-2025 09:40:57 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:40:57 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:40:57 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:40:57 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:40:57 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:40:57 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:40:57 UTC] PHP Stack trace:
+[17-Jul-2025 09:40:57 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:40:57 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:40:57 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:40:57 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:40:57 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:40:57 UTC] PHP Stack trace:
+[17-Jul-2025 09:40:57 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:40:57 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:40:57 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:40:57 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:40:57 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:04 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 09:41:04 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 09:41:04 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 09:41:04 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 09:41:04 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 09:41:04 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 09:41:04 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:04 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:04 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:04 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:04 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:04 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:04 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:04 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:04 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:04 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:04 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:04 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:04 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:04 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:04 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:04 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:04 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:04 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:04 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:04 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:04 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:04 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:04 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:04 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:04 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:04 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:04 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:04 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:04 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:04 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:04 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:04 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:04 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:04 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:04 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:04 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:04 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:04 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:04 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:04 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 09:41:04 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 09:41:04 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 09:41:04 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 09:41:04 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 09:41:04 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 09:41:04 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:04 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:04 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:04 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:04 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:04 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:04 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:04 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:04 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:04 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:04 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:04 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:04 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:04 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:04 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:04 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:04 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:04 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:04 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:04 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:04 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:04 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:04 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:04 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:04 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:04 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:04 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:04 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:04 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:04 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 09:41:05 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 09:41:05 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:05 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:05 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 09:41:05 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 09:41:05 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:05 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:05 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 09:41:05 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 09:41:05 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 09:41:05 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:05 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:05 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:05 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:05 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:05 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 09:41:06 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 09:41:06 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:06 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:06 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 09:41:06 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 09:41:06 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:06 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:06 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 09:41:06 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 09:41:06 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 09:41:06 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:06 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:41:06 UTC] PHP Warning:  Undefined array key "date_formatee" in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\wamp64\www\Altiris\root\frontoffice\views\home.php on line 184
+[17-Jul-2025 09:41:06 UTC] PHP Stack trace:
+[17-Jul-2025 09:41:06 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 09:41:06 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->index() D:\wamp64\www\Altiris\root\index.php:47
+[17-Jul-2025 09:41:06 UTC] PHP   3. Altiris\FrontOffice\Controllers\HomeController->renderView($data = ['announcements' => [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...]], 'carouselImages' => [], 'actualites' => [0 => [...], 1 => [...], 2 => [...]], 'services' => [0 => [...], 1 => [...], 2 => [...]]]) D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:42
+[17-Jul-2025 09:41:06 UTC] PHP   4. require() D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:146
+[17-Jul-2025 09:41:06 UTC] PHP   5. htmlspecialchars($string = NULL) D:\wamp64\www\Altiris\root\frontoffice\views\home.php:184
+[17-Jul-2025 09:49:26 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 09:49:26 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 09:49:26 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 09:49:26 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 09:49:26 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 09:49:26 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:35 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:35 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:35 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:35 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:35 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:35 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:36 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:36 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:36 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:36 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:37 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:37 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:37 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:37 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:37 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:37 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:38 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:38 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:38 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:38 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:38 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:38 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:38 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:39 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:39 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:39 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:39 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:39 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:39 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:50 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:50 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:50 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:50 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:51 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:51 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:51 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:51 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:51 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:51 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:52 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:52 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:08:52 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:08:52 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:11:00 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:11:00 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:11:00 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:11:00 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:11:00 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:11:00 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:11:00 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:11:00 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:11:00 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:11:01 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:11:01 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:11:01 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:11:01 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:11:01 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:11:01 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:11:01 UTC] Erreur ImageModel: SQLSTATE[42S02]: Base table or view not found: 1146 La table 'altiris_base.image_acceuil' n'existe pas
+[17-Jul-2025 10:39:04 UTC] PHP Fatal error:  Uncaught Error: Class "Altiris\FrontOffice\Models\ImageModel" not found in D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:27
+Stack trace:
+#0 D:\wamp64\www\Altiris\root\index.php(46): Altiris\FrontOffice\Controllers\HomeController->__construct(Object(PDO))
+#1 {main}
+  thrown in D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php on line 27
+[17-Jul-2025 10:41:05 UTC] PHP Warning:  require_once(D:\wamp64\www\Altiris\root\frontoffice\controllers/../models/ImageModel.php): Failed to open stream: No such file or directory in D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php on line 29
+[17-Jul-2025 10:41:05 UTC] PHP Stack trace:
+[17-Jul-2025 10:41:05 UTC] PHP   1. {main}() D:\wamp64\www\Altiris\root\index.php:0
+[17-Jul-2025 10:41:05 UTC] PHP   2. Altiris\FrontOffice\Controllers\HomeController->__construct($db = class PDO {  }) D:\wamp64\www\Altiris\root\index.php:46
+[17-Jul-2025 10:41:05 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'D:\wamp64\www\Altiris\root\frontoffice\controllers/../models/ImageModel.php' (include_path='.;C:\php\pear') in D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php:29
+Stack trace:
+#0 D:\wamp64\www\Altiris\root\index.php(46): Altiris\FrontOffice\Controllers\HomeController->__construct(Object(PDO))
+#1 {main}
+  thrown in D:\wamp64\www\Altiris\root\frontoffice\controllers\HomeController.php on line 29
+[17-Jul-2025 10:43:52 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:43:52 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:43:52 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:43:52 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:43:52 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:43:52 UTC] Vérification image: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670504_33d16087321b307c82566202f91e780f.jpg
+[17-Jul-2025 10:43:52 UTC] Image non trouvée pour actualité ID: 10
+[17-Jul-2025 10:43:52 UTC] Vérification image: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670519_1920x1080.jpg
+[17-Jul-2025 10:43:52 UTC] Image non trouvée pour actualité ID: 16
+[17-Jul-2025 10:43:52 UTC] Vérification image: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752664222_398547.jpg
+[17-Jul-2025 10:43:52 UTC] Image non trouvée pour actualité ID: 13
+[17-Jul-2025 10:43:52 UTC] Vérification image: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671216_7411_Digital_Animation_5.jpg
+[17-Jul-2025 10:43:52 UTC] Image non trouvée pour service ID: 1
+[17-Jul-2025 10:43:52 UTC] Vérification image: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671237_1600x900_man-hood-mask-neon-glow.jpg
+[17-Jul-2025 10:43:52 UTC] Image non trouvée pour service ID: 2
+[17-Jul-2025 10:43:52 UTC] Vérification image: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671251_abraham_lincoln_vampire_hunter-1920x1080.jpg
+[17-Jul-2025 10:43:52 UTC] Image non trouvée pour service ID: 3
+[17-Jul-2025 10:48:04 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:48:04 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:48:04 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:48:04 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:48:04 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:48:04 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670504_33d16087321b307c82566202f91e780f.jpg
+[17-Jul-2025 10:48:04 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670504_33d16087321b307c82566202f91e780f.jpg
+[17-Jul-2025 10:48:04 UTC] Image non trouvée pour actualité ID: 10
+[17-Jul-2025 10:48:04 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670519_1920x1080.jpg
+[17-Jul-2025 10:48:04 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670519_1920x1080.jpg
+[17-Jul-2025 10:48:04 UTC] Image non trouvée pour actualité ID: 16
+[17-Jul-2025 10:48:04 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752664222_398547.jpg
+[17-Jul-2025 10:48:04 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752664222_398547.jpg
+[17-Jul-2025 10:48:04 UTC] Image non trouvée pour actualité ID: 13
+[17-Jul-2025 10:48:04 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671216_7411_Digital_Animation_5.jpg
+[17-Jul-2025 10:48:04 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671216_7411_Digital_Animation_5.jpg
+[17-Jul-2025 10:48:04 UTC] Image non trouvée pour service ID: 1
+[17-Jul-2025 10:48:04 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671237_1600x900_man-hood-mask-neon-glow.jpg
+[17-Jul-2025 10:48:04 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671237_1600x900_man-hood-mask-neon-glow.jpg
+[17-Jul-2025 10:48:04 UTC] Image non trouvée pour service ID: 2
+[17-Jul-2025 10:48:04 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671251_abraham_lincoln_vampire_hunter-1920x1080.jpg
+[17-Jul-2025 10:48:04 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671251_abraham_lincoln_vampire_hunter-1920x1080.jpg
+[17-Jul-2025 10:48:04 UTC] Image non trouvée pour service ID: 3
+[17-Jul-2025 10:48:05 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:48:05 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:48:05 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:48:05 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:48:05 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670504_33d16087321b307c82566202f91e780f.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670504_33d16087321b307c82566202f91e780f.jpg
+[17-Jul-2025 10:48:05 UTC] Image non trouvée pour actualité ID: 10
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670519_1920x1080.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670519_1920x1080.jpg
+[17-Jul-2025 10:48:05 UTC] Image non trouvée pour actualité ID: 16
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752664222_398547.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752664222_398547.jpg
+[17-Jul-2025 10:48:05 UTC] Image non trouvée pour actualité ID: 13
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671216_7411_Digital_Animation_5.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671216_7411_Digital_Animation_5.jpg
+[17-Jul-2025 10:48:05 UTC] Image non trouvée pour service ID: 1
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671237_1600x900_man-hood-mask-neon-glow.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671237_1600x900_man-hood-mask-neon-glow.jpg
+[17-Jul-2025 10:48:05 UTC] Image non trouvée pour service ID: 2
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671251_abraham_lincoln_vampire_hunter-1920x1080.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671251_abraham_lincoln_vampire_hunter-1920x1080.jpg
+[17-Jul-2025 10:48:05 UTC] Image non trouvée pour service ID: 3
+[17-Jul-2025 10:48:05 UTC] Image manquante: AssetsImages1752670117_395961.jpg
+[17-Jul-2025 10:48:05 UTC] Image manquante: AssetsImages1752670059_503416862-612x612.jpg
+[17-Jul-2025 10:48:05 UTC] Image manquante: AssetsImages1752670021_8274_digital_technology_6.jpg
+[17-Jul-2025 10:48:05 UTC] Image manquante: AssetsImages1752670005_85305.jpg
+[17-Jul-2025 10:48:05 UTC] Image manquante: AssetsImages1752670035_28647.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670504_33d16087321b307c82566202f91e780f.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670504_33d16087321b307c82566202f91e780f.jpg
+[17-Jul-2025 10:48:05 UTC] Image non trouvée pour actualité ID: 10
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670519_1920x1080.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752670519_1920x1080.jpg
+[17-Jul-2025 10:48:05 UTC] Image non trouvée pour actualité ID: 16
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752664222_398547.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752664222_398547.jpg
+[17-Jul-2025 10:48:05 UTC] Image non trouvée pour actualité ID: 13
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671216_7411_Digital_Animation_5.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671216_7411_Digital_Animation_5.jpg
+[17-Jul-2025 10:48:05 UTC] Image non trouvée pour service ID: 1
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671237_1600x900_man-hood-mask-neon-glow.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671237_1600x900_man-hood-mask-neon-glow.jpg
+[17-Jul-2025 10:48:05 UTC] Image non trouvée pour service ID: 2
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Vérification de D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671251_abraham_lincoln_vampire_hunter-1920x1080.jpg
+[17-Jul-2025 10:48:05 UTC] verifyImagePath: Fichier non trouvé: D:/wamp64/www/Altiris/Assets/Images/AssetsImages1752671251_abraham_lincoln_vampire_hunter-1920x1080.jpg
+[17-Jul-2025 10:48:05 UTC] Image non trouvée pour service ID: 3
