@@ -17,7 +17,7 @@ $annonces = $controller->index();
                     <p><?php echo isset($annonce['text']) && $annonce['text'] !== null ? htmlspecialchars($annonce['text']) : '(Aucun texte)'; ?></p>
                     <div class="card-image">
                         <?php if (isset($annonce['image']) && $annonce['image'] !== null): ?>
-                            <img src="data:image/jpeg;base64,<?php echo base64_encode($annonce['image']); ?>" alt="Annonce image">
+                            <img src="/Altiris/<?php echo htmlspecialchars($annonce['image']); ?>" alt="Annonce image">
                         <?php else: ?>
                             <p class="text-center">(Aucune image)</p>
                         <?php endif; ?>

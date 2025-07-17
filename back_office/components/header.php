@@ -44,6 +44,7 @@ $adminName = $_SESSION['username'] ?? 'Elie samuel';
             <a class="nav-link" href="/Altiris/back_office/views/actualiters/index.php"><i class="fas fa-newspaper"></i> Actualités</a>
             <a class="nav-link" href="/Altiris/back_office/views/membres/index.php"><i class="fas fa-users"></i> Membres</a>
             <a class="nav-link" href="/Altiris/back_office/views/contact_ent/index.php"><i class="fas fa-users"></i> Contact entreprise</a>
+            <a class="nav-link" href="/Altiris/back_office/views/contacte/index.php"><i class="fas fa-users"></i> Contact</a>
         </nav>
         <div class="mt-auto">
             <a class="nav-link" href="/Altiris/back_office/logout.php"><i class="fas fa-sign-out-alt"></i> Déconnecter</a>

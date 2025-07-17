@@ -17,11 +17,9 @@ class MembreController {
             return null;
         }
 
-        // Débogage des données reçues
         error_log("Données POST reçues : " . json_encode($_POST));
         error_log("Données FILES reçues : " . json_encode($_FILES));
 
-        // Validation des données
         $required = ['prenom', 'nom', 'email'];
         foreach ($required as $field) {
             if (empty(trim($_POST[$field]))) {
@@ -29,34 +27,43 @@ class MembreController {
             }
         }
 
-        // Validation email
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             return "Format d'email invalide";
         }
 
-        // Vérifier si l'email existe déjà
         if ($this->model->emailExists($_POST['email'])) {
             return "Cet email est déjà utilisé";
         }
 
-        // Traitement de la photo (facultative pour tester)
         $photo = null;
+        $uploadDir = dirname(__DIR__, 2) . '/Assets/Images/';
+        if (!file_exists($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
         if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
-            // Vérification du type
-            $mime = mime_content_type($_FILES['photo']['tmp_name']);
-            if (!in_array($mime, ['image/jpeg', 'image/png'])) {
-                return "Seuls les formats JPG et PNG sont acceptés";
+            $tmpFile = $_FILES['photo']['tmp_name'];
+            if (file_exists($tmpFile)) {
+                $mime = mime_content_type($tmpFile);
+                if (!in_array($mime, ['image/jpeg', 'image/png'])) {
+                    return "Seuls les formats JPG et PNG sont acceptés";
+                }
+                if ($_FILES['photo']['size'] > 2097152) {
+                    return "La photo ne doit pas dépasser 2MB";
+                }
+                $photoName = time() . '_' . basename($_FILES['photo']['name']);
+                $targetFile = $uploadDir . $photoName;
+                if (move_uploaded_file($tmpFile, $targetFile)) {
+                    $photo = 'Assets/Images/' . $photoName;
+                } else {
+                    error_log("Échec du déplacement du fichier temporaire vers $targetFile");
+                    return "Erreur lors du téléchargement de la photo.";
+                }
+            } else {
+                error_log("Fichier temporaire $tmpFile introuvable");
+                return "Fichier temporaire introuvable.";
             }
-
-            // Vérification de la taille (max 2MB)
-            if ($_FILES['photo']['size'] > 2097152) {
-                return "La photo ne doit pas dépasser 2MB";
-            }
-
-            $photo = file_get_contents($_FILES['photo']['tmp_name']);
         }
 
-        // Préparation des données
         $data = [
             'prenom' => trim($_POST['prenom']),
             'nom' => trim($_POST['nom']),
@@ -68,7 +75,6 @@ class MembreController {
             'lien_facebook' => !empty($_POST['lien_facebook']) ? trim($_POST['lien_facebook']) : null
         ];
 
-        // Création du membre
         $result = $this->model->create($data, $photo);
         if ($result === true) {
             $lastId = $this->model->getConnection()->lastInsertId();
@@ -76,6 +82,7 @@ class MembreController {
             return true;
         } else {
             error_log("Échec création membre : " . $result);
+            if ($photo && file_exists($targetFile)) unlink($targetFile);
             return $result;
         }
     }
@@ -87,7 +94,6 @@ class MembreController {
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Validation des données
             $required = ['prenom', 'nom', 'email'];
             foreach ($required as $field) {
                 if (empty(trim($_POST[$field]))) {
@@ -95,12 +101,10 @@ class MembreController {
                 }
             }
 
-            // Validation email
             if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                 return "Format d'email invalide";
             }
 
-            // Préparation des données
             $data = [
                 'prenom' => trim($_POST['prenom']),
                 'nom' => trim($_POST['nom']),
@@ -112,34 +116,62 @@ class MembreController {
                 'lien_facebook' => !empty($_POST['lien_facebook']) ? trim($_POST['lien_facebook']) : null
             ];
 
-            // Traitement de la photo
             $photo = null;
             $remove_photo = isset($_POST['remove_photo']);
-            
+            $uploadDir = dirname(__DIR__, 2) . '/Assets/Images/';
+            if (!file_exists($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
             if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
-                $mime = mime_content_type($_FILES['photo']['tmp_name']);
-                if (!in_array($mime, ['image/jpeg', 'image/png'])) {
-                    return "Seuls les formats JPG et PNG sont acceptés";
+                $tmpFile = $_FILES['photo']['tmp_name'];
+                if (file_exists($tmpFile)) {
+                    $mime = mime_content_type($tmpFile);
+                    if (!in_array($mime, ['image/jpeg', 'image/png'])) {
+                        return "Seuls les formats JPG et PNG sont acceptés";
+                    }
+                    if ($_FILES['photo']['size'] > 2097152) {
+                        return "La photo ne doit pas dépasser 2MB";
+                    }
+                    $photoName = time() . '_' . basename($_FILES['photo']['name']);
+                    $targetFile = $uploadDir . $photoName;
+                    if (move_uploaded_file($tmpFile, $targetFile)) {
+                        $photo = 'Assets/Images/' . $photoName;
+                    } else {
+                        error_log("Échec du déplacement du fichier temporaire vers $targetFile");
+                        return "Erreur lors du téléchargement de la photo.";
+                    }
+                } else {
+                    error_log("Fichier temporaire $tmpFile introuvable");
+                    return "Fichier temporaire introuvable.";
                 }
-                if ($_FILES['photo']['size'] > 2097152) {
-                    return "La photo ne doit pas dépasser 2MB";
-                }
-                $photo = file_get_contents($_FILES['photo']['tmp_name']);
             }
 
             $result = $this->model->update($id, $data, $photo, $remove_photo);
             if ($result === true) {
                 return true;
             } else {
-                return $result;
+                if ($photo && file_exists($targetFile)) unlink($targetFile);
+                return $result ?: "Erreur lors de la mise à jour.";
             }
         }
 
-        return $this->model->getById($id);
+        $membre = $this->model->getById($id);
+        if (!$membre) {
+            header("Location: index.php");
+            exit;
+        }
+        return $membre;
     }
 
     public function delete($id) {
         if (is_numeric($id) && $id > 0) {
+            $membre = $this->model->getById($id);
+            if ($membre && isset($membre['photo']) && $membre['photo']) {
+                $imagePath = dirname(__DIR__, 2) . '/' . $membre['photo'];
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
             return $this->model->delete($id);
         }
         return false;

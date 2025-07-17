@@ -20,7 +20,7 @@ $controller->edit($id);
         <label for="image">Image</label>
         <input type="file" class="form-control" id="image" name="image" accept="image/*">
         <?php if (isset($annonce['image']) && $annonce['image'] !== null): ?>
-            <img src="data:image/jpeg;base64,<?php echo base64_encode($annonce['image']); ?>" width="100" class="mt-2">
+            <img src="/Altiris/<?php echo htmlspecialchars($annonce['image']); ?>" width="100" class="mt-2">
         <?php else: ?>
             <p>(Aucune image)</p>
         <?php endif; ?>

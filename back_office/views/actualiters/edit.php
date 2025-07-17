@@ -1,11 +1,6 @@
 <?php
 require_once '../../components/header.php';
 require_once dirname(__DIR__, 2) . '/controllers/ActualiterController.php';
-
-$db = new Database();
-$pdo = $db->getConnection();
-if (!$pdo) die("Erreur de connexion à la base de données.");
-
 $controller = new ActualiterController();
 $controller->edit($_GET['id'] ?? null);
 ?>
@@ -26,7 +21,7 @@ $controller->edit($_GET['id'] ?? null);
         <label for="image">Image (optionnel)</label>
         <input type="file" class="form-control" id="image" name="image" accept="image/*">
         <?php if ($actualiter['image']): ?>
-            <img src="data:image/jpeg;base64,<?php echo base64_encode($actualiter['image']); ?>" style="max-width: 100px; margin-top: 10px;">
+            <img src="/Altiris/<?php echo htmlspecialchars($actualiter['image']); ?>" style="max-width: 100px; margin-top: 10px;">
         <?php else: ?>
             <p>Pas d'image</p>
         <?php endif; ?>

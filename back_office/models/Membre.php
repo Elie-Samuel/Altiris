@@ -66,7 +66,7 @@ class Membre {
             $tel = !empty($data['Tel']) ? $data['Tel'] : null;
             $stmt->bindParam(':tel', $tel);
             
-            $stmt->bindValue(':photo', $photo, $photo !== null ? PDO::PARAM_LOB : PDO::PARAM_NULL);
+            $stmt->bindValue(':photo', $photo, $photo !== null ? PDO::PARAM_STR : PDO::PARAM_NULL);
             $competce_mbr = !empty($data['competce_mbr']) ? $data['competce_mbr'] : null;
             $lien_facebook = !empty($data['lien_facebook']) ? $data['lien_facebook'] : null;
             $stmt->bindParam(':competce_mbr', $competce_mbr, PDO::PARAM_STR);
@@ -123,7 +123,7 @@ class Membre {
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             
             if ($photo !== null) {
-                $stmt->bindParam(':photo', $photo, PDO::PARAM_LOB);
+                $stmt->bindParam(':photo', $photo, PDO::PARAM_STR);
             } elseif ($remove_photo) {
                 $stmt->bindValue(':photo', null, PDO::PARAM_NULL);
             }

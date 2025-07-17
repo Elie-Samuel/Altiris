@@ -27,7 +27,7 @@ $services = $controller->index();
                 </div>
                 <div class="card-image">
                     <?php if (isset($service['image']) && $service['image'] !== null): ?>
-                        <img src="data:image/jpeg;base64,<?php echo base64_encode($service['image']); ?>" alt="Image du service">
+                        <img src="/Altiris/<?php echo htmlspecialchars($service['image']); ?>" alt="Image du service">
                     <?php else: ?>
                         <p>(Aucune image)</p>
                     <?php endif; ?>

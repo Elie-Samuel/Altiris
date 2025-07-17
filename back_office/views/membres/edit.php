@@ -12,7 +12,7 @@ if (!$id || !is_numeric($id)) {
 }
 
 $membre = $controller->edit($id);
-if (!$membre) {
+if ($membre === false || !is_array($membre)) {
     header("Location: index.php");
     exit;
 }
@@ -25,12 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     } else {
         $error = $result;
-        $membre = $controller->getById($id); // Recharger les données
+        // Réutiliser $membre existant au lieu de recharger
     }
 }
 ?>
 
-<h2>Modifier le membre #<?= htmlspecialchars($membre['id_membre']) ?></h2>
+<h2>Modifier le membre #<?= htmlspecialchars($membre['id_membre'] ?? 'Invalide') ?></h2>
 
 <?php if ($error): ?>
     <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3">
                 <label class="form-label">Prénom *</label>
                 <input type="text" name="prenom" class="form-control" 
-                       value="<?= htmlspecialchars($membre['prenom']) ?>" required>
+                       value="<?= htmlspecialchars($membre['prenom'] ?? '') ?>" required>
                 <div class="invalid-feedback">Veuillez renseigner le prénom</div>
             </div>
         </div>
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3">
                 <label class="form-label">Nom *</label>
                 <input type="text" name="nom" class="form-control" 
-                       value="<?= htmlspecialchars($membre['nom']) ?>" required>
+                       value="<?= htmlspecialchars($membre['nom'] ?? '') ?>" required>
                 <div class="invalid-feedback">Veuillez renseigner le nom</div>
             </div>
         </div>
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="mb-3">
         <label class="form-label">Email *</label>
         <input type="email" name="email" class="form-control" 
-               value="<?= htmlspecialchars($membre['email']) ?>" required>
+               value="<?= htmlspecialchars($membre['email'] ?? '') ?>" required>
         <div class="invalid-feedback">Veuillez renseigner un email valide</div>
     </div>
 
@@ -68,8 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3">
                 <label class="form-label">Rôle</label>
                 <select name="role" class="form-select">
-                    <option value="utilisateur" <?= $membre['role'] === 'utilisateur' ? 'selected' : '' ?>>Utilisateur</option>
-                    <option value="admin" <?= $membre['role'] === 'admin' ? 'selected' : '' ?>>Administrateur</option>
+                    <option value="utilisateur" <?= isset($membre['role']) && $membre['role'] === 'utilisateur' ? 'selected' : '' ?>>Utilisateur</option>
+                    <option value="admin" <?= isset($membre['role']) && $membre['role'] === 'admin' ? 'selected' : '' ?>>Administrateur</option>
                 </select>
             </div>
         </div>
@@ -77,8 +77,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3">
                 <label class="form-label">Statut</label>
                 <select name="statut" class="form-select">
-                    <option value="actif" <?= $membre['statut'] === 'actif' ? 'selected' : '' ?>>Actif</option>
-                    <option value="inactif" <?= $membre['statut'] === 'inactif' ? 'selected' : '' ?>>Inactif</option>
+                    <option value="actif" <?= isset($membre['statut']) && $membre['statut'] === 'actif' ? 'selected' : '' ?>>Actif</option>
+                    <option value="inactif" <?= isset($membre['statut']) && $membre['statut'] === 'inactif' ? 'selected' : '' ?>>Inactif</option>
                 </select>
             </div>
         </div>
@@ -103,10 +103,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="mb-3">
         <label class="form-label">Photo</label>
-        <?php if (!empty($membre['photo'])): ?>
+        <?php if (isset($membre['photo']) && !empty($membre['photo'])): ?>
             <div class="mb-2">
-                <img src="data:image/jpeg;base64,<?= base64_encode($membre['photo']) ?>" 
-                     alt="Photo de <?= htmlspecialchars($membre['prenom']) ?>" 
+                <img src="/Altiris/<?= htmlspecialchars($membre['photo']) ?>" 
+                     alt="Photo de <?= htmlspecialchars($membre['prenom'] ?? 'Membre') ?>" 
                      width="100" class="img-thumbnail object-fit-cover">
                 <div class="form-check mt-2">
                     <input class="form-check-input" type="checkbox" name="remove_photo" id="remove_photo">

@@ -2,7 +2,10 @@
 require_once '../../components/header.php';
 require_once dirname(__DIR__, 2) . '/controllers/ServiceController.php';
 $controller = new ServiceController();
-$controller->edit($_GET['id'] ?? null);
+$id = $_GET['id'] ?? null;
+
+// Charger les données initiales ou modifiées via edit()
+$controller->edit($id);
 ?>
 <h2>Modifier un Service</h2>
 <?php if (isset($error)): ?>
@@ -21,7 +24,7 @@ $controller->edit($_GET['id'] ?? null);
         <label for="image">Image</label>
         <input type="file" class="form-control" id="image" name="image" accept="image/*">
         <?php if (isset($service['image']) && $service['image'] !== null): ?>
-            <img src="data:image/jpeg;base64,<?php echo base64_encode($service['image']); ?>" width="100" class="mt-2">
+            <img src="/Altiris/<?php echo htmlspecialchars($service['image']); ?>" width="100" class="mt-2">
         <?php else: ?>
             <p>(Aucune image)</p>
         <?php endif; ?>

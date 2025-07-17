@@ -18,7 +18,7 @@ class Service {
         $stmt->bindParam(':titre', $titre);
         $stmt->bindParam(':texte', $texte);
         if ($image) {
-            $stmt->bindParam(':image', $image, PDO::PARAM_LOB);
+            $stmt->bindParam(':image', $image); // Chemin de l'image
         }
         return $stmt->execute();
     }
@@ -46,7 +46,7 @@ class Service {
         $stmt->bindParam(':titre', $titre);
         $stmt->bindParam(':texte', $texte);
         if ($image) {
-            $stmt->bindParam(':image', $image, PDO::PARAM_LOB);
+            $stmt->bindParam(':image', $image); // Chemin de l'image
         }
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();

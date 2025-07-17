@@ -29,7 +29,7 @@ if (isset($_GET['delete'])) {
                 </div>
                 <div class="card-image">
                     <?php if ($actualiter['image']): ?>
-                        <img src="data:image/jpeg;base64,<?php echo base64_encode($actualiter['image']); ?>" alt="Image de l'actualité">
+                        <img src="/Altiris/<?php echo htmlspecialchars($actualiter['image']); ?>" alt="Image de l'actualité">
                     <?php else: ?>
                         <p>Pas d'image</p>
                     <?php endif; ?>

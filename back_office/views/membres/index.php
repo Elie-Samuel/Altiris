@@ -38,7 +38,7 @@ if (isset($_GET['delete'])) {
                     <div class="card-body">
                         <div class="text-center mb-3">
                             <?php if (!empty($membre['photo'])): ?>
-                                <img src="data:image/jpeg;base64,<?= base64_encode($membre['photo']) ?>" 
+                                <img src="/Altiris/<?= htmlspecialchars($membre['photo']) ?>" 
                                      alt="Photo de <?= htmlspecialchars($membre['prenom'] . ' ' . $membre['nom']) ?>" 
                                      class="img-fluid">
                             <?php else: ?>

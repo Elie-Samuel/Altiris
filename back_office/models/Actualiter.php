@@ -16,7 +16,7 @@ class Actualiter {
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':texte', $texte);
         $stmt->bindParam(':Date', $date);
-        $stmt->bindParam(':image', $image, PDO::PARAM_LOB);
+        $stmt->bindParam(':image', $image); // Chemin de l'image
         return $stmt->execute();
     }
 
@@ -39,7 +39,7 @@ class Actualiter {
         if ($image) {
             $query = "UPDATE $this->table SET Date = :Date, texte = :texte, image = :image WHERE id = :id";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':image', $image, PDO::PARAM_LOB);
+            $stmt->bindParam(':image', $image);
         } else {
             $query = "UPDATE $this->table SET Date = :Date, texte = :texte WHERE id = :id";
             $stmt = $this->conn->prepare($query);

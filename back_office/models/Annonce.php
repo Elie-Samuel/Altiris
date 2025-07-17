@@ -18,7 +18,7 @@ class Annonce {
             $query = "INSERT INTO " . $this->table . " (text, image) VALUES (:text, :image)";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':text', $text);
-            $stmt->bindParam(':image', $image, PDO::PARAM_LOB);
+            $stmt->bindParam(':image', $image); // Chemin de l'image
             return $stmt->execute();
         } catch (PDOException $e) {
             error_log("Erreur lors de la création : " . $e->getMessage());
@@ -42,7 +42,7 @@ class Annonce {
         try {
             $query = "SELECT * FROM " . $this->table . " WHERE id = :id";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -58,8 +58,8 @@ class Annonce {
                 "UPDATE " . $this->table . " SET text = :text WHERE id = :id";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':text', $text);
-            if ($image) $stmt->bindParam(':image', $image, PDO::PARAM_LOB);
-            $stmt->bindParam(':id', $id);
+            if ($image) $stmt->bindParam(':image', $image);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             return $stmt->execute();
         } catch (PDOException $e) {
             error_log("Erreur lors de la mise à jour : " . $e->getMessage());
@@ -71,7 +71,7 @@ class Annonce {
         try {
             $query = "DELETE FROM " . $this->table . " WHERE id = :id";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             return $stmt->execute();
         } catch (PDOException $e) {
             error_log("Erreur lors de la suppression : " . $e->getMessage());

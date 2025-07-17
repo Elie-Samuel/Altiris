@@ -5,6 +5,9 @@ $controller = new AnnonceController();
 $controller->create();
 ?>
 <h2>Ajouter une Annonce</h2>
+<?php if (isset($error)): ?>
+    <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
+<?php endif; ?>
 <form method="POST" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="text">Texte</label>
