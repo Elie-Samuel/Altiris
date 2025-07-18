@@ -1,4 +1,6 @@
 <?php
+// D:\wamp64\www\Altiris\config\db.php
+
 class Database {
     private $host = "localhost";
     private $db_name = "altiris_base";
@@ -16,16 +18,16 @@ class Database {
                 $this->password
             );
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            // Test de requête (optionnel, pour débogage)
-            $test = $this->conn->query("SELECT 1 FROM actualiter LIMIT 1");
-            if ($test === false) {
-                error_log("La table actualiter n'existe pas ou est inaccessible");
-            }
+            $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         } catch(PDOException $exception) {
             error_log("Erreur de connexion : " . $exception->getMessage());
+            throw $exception; // Propage l'exception pour une meilleure gestion
         }
         
         return $this->conn;
     }
 }
-?>
+
+// Création de l'instance unique
+$database = new Database();
+$db = $database->getConnection();

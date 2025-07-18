@@ -1,77 +1,68 @@
 <?php
 namespace Altiris\FrontOffice\Models;
 
+use PDO;
+use PDOException;
+
 class TestimonialModel {
     private $db;
-    private $imageBasePath;
 
-    public function __construct($db, $imageBasePath) {
+    public function __construct(PDO $db) {
         $this->db = $db;
-        $this->imageBasePath = rtrim(str_replace('\\', '/', $imageBasePath), '/');
-        
-        // Vérification immédiate du dossier
-        if (!is_dir($this->imageBasePath)) {
-            throw new RuntimeException(
-                "Dossier images introuvable: ".$this->imageBasePath."\n".
-                "Solution: Créez le dossier ou vérifiez les permissions"
-            );
-        }
     }
 
     public function getAllAnnouncements() {
         try {
-            $stmt = $this->db->prepare("SELECT id, image, text FROM annonce ORDER BY id DESC");
+            $query = "SELECT id, text, image FROM annonce ORDER BY id DESC";
+            $stmt = $this->db->prepare($query);
             $stmt->execute();
             
-            return array_map(
-                [$this, 'processAnnouncement'],
-                $stmt->fetchAll(\PDO::FETCH_ASSOC)
-            );
-        } catch (\PDOException $e) {
-            $this->logError("getAllAnnouncements", $e);
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            return array_map([$this, 'processAnnouncement'], $results);
+        } catch (PDOException $e) {
+            error_log("Erreur getAllAnnouncements: " . $e->getMessage());
             return [];
         }
     }
 
     private function processAnnouncement($announcement) {
         return [
-            'id' => $announcement['id'] ?? null,
-            'image' => $this->processImage($announcement['image'] ?? null),
-            'content' => $announcement['text'] ?? '',
-            'lines' => $this->processContent($announcement['text'] ?? '')
+            'id' => $announcement['id'],
+            'image' => $this->getImageUrl($announcement['image']),
+            'content' => $announcement['text'],
+            'lines' => $this->processContent($announcement['text'])
         ];
     }
 
-    private function processImage($imageName) {
-        if (empty($imageName)) return null;
-
-        // Nettoyage strict du nom de fichier
-        $safeName = basename(preg_replace('/[^a-zA-Z0-9._-]/', '', $imageName));
-        $fullPath = $this->imageBasePath.'/'.$safeName;
-
-        if (file_exists($fullPath)) {
-            return WEB_IMAGE_PATH.'/'.$safeName;
+    private function getImageUrl($imageName) {
+        if (empty($imageName)) {
+            return null;
         }
-
-        error_log("Image manquante: ".$safeName);
+        
+        // Supprimer "Assets/Images/" du début si présent
+        $imageName = str_replace('Assets/Images/', '', $imageName);
+        
+        $basePath = '/Altiris/root/frontoffice/uploads/';
+        $fullPath = $_SERVER['DOCUMENT_ROOT'] . $basePath . $imageName;
+        
+        if (file_exists($fullPath)) {
+            return $basePath . $imageName;
+        }
+        
+        // Alternative si l'image est dans un autre dossier
+        $altPath = '/Altiris/Assets/Images/' . $imageName;
+        $altFullPath = $_SERVER['DOCUMENT_ROOT'] . $altPath;
+        
+        if (file_exists($altFullPath)) {
+            return $altPath;
+        }
+        
         return null;
     }
 
     private function processContent($content) {
-        $lines = array_filter(
-            array_map('trim', explode("\n", $content)),
-            fn($line) => !empty($line)
-        );
-        return array_values($lines);
-    }
-
-    private function logError($context, $exception) {
-        error_log(sprintf(
-            "[%s] TestimonialModel/%s: %s\nStack trace:\n%s",
-            date('Y-m-d H:i:s'),
-            $context,
-            $exception->getMessage(),
-            $exception->getTraceAsString()
-        ));
+        $lines = explode("\n", $content);
+        return array_filter(array_map('trim', $lines));
     }
 }

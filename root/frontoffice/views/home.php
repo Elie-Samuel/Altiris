@@ -1,5 +1,4 @@
 <link href="/Altiris/root/frontoffice/css/announcements.css" rel="stylesheet">
-<link href="/Altiris/root/frontoffice/css/testimonials.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 
 <!-- Section Slider Annonces -->
@@ -8,13 +7,11 @@
     <?php foreach ($announcements as $announcement): ?>
         <div class="announcement-item">
             <?php if (!empty($announcement['image'])): ?>
-                <img src="<?= htmlspecialchars($announcement['image'], ENT_QUOTES, 'UTF-8') ?>" alt="Annonce">
-            <?php else: ?>
-                <p>Aucune image disponible</p>
+                <img src="<?= htmlspecialchars($announcement['image']) ?>" alt="Annonce">
             <?php endif; ?>
             <div class="announcement-text">
                 <?php foreach ($announcement['lines'] as $line): ?>
-                    <p><?= htmlspecialchars($line, ENT_QUOTES, 'UTF-8') ?></p>
+                    <p><?= htmlspecialchars($line) ?></p>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -28,56 +25,6 @@
 </div>
 <?php endif; ?>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Animation des annonces
-    gsap.from('.announcement-line', {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        stagger: 0.3,
-        delay: 0.5
-    });
-
-    // Slider annonces
-    const slider = document.querySelector('.announcements-slider');
-    if (slider) {
-        let currentIndex = 0;
-        const items = slider.querySelectorAll('.announcement-item');
-        const indicators = document.querySelectorAll('.slide-indicator');
-        const totalItems = items.length;
-
-        function updateSlider() {
-            items.forEach(item => item.style.display = 'none');
-            indicators.forEach(ind => ind.classList.remove('active'));
-            items[currentIndex].style.display = 'block';
-            indicators[currentIndex].classList.add('active');
-        }
-
-        function nextItem() {
-            currentIndex = (currentIndex + 1) % totalItems;
-            updateSlider();
-        }
-
-        indicators.forEach(indicator => {
-            indicator.addEventListener('click', () => {
-                currentIndex = parseInt(indicator.dataset.index);
-                updateSlider();
-            });
-        });
-
-        const interval = setInterval(nextItem, 5000);
-        slider.addEventListener('mouseenter', () => clearInterval(interval));
-        slider.addEventListener('mouseleave', () => {
-            clearInterval(interval);
-            interval = setInterval(nextItem, 5000);
-        });
-
-        updateSlider();
-    }
-});
-</script>
-
 <!-- Section Services -->
 <section class="py-5 bg-light">
     <div class="container">
@@ -85,37 +32,40 @@ document.addEventListener('DOMContentLoaded', function() {
             <h2>Nos Services Phares</h2>
             <p class="lead">Découvrez nos solutions clés pour votre entreprise</p>
         </div>
+        
         <div class="row g-4">
             <?php if (!empty($services)): ?>
                 <?php 
                 $serviceColors = ['primary', 'success', 'info'];
                 $index = 0;
                 ?>
+                
                 <?php foreach ($services as $service): ?>
                     <?php $color = $serviceColors[$index % count($serviceColors)]; $index++; ?>
+                    
                     <div class="col-md-4">
                         <div class="card h-100 border-0 shadow-sm">
-                            <div class="card-body text-center p-4">
-                                <h4><?= htmlspecialchars($service['titre'] ?? 'Service', ENT_QUOTES, 'UTF-8') ?></h4>
-                                <?php if (!empty($service['image'])): ?>
-                                    <img src="<?= htmlspecialchars($service['image'], ENT_QUOTES, 'UTF-8') ?>" class="img-fluid mb-3" alt="Image service">
-                                <?php else: ?>
-                                    <p>Aucune image disponible</p>
+            <div class="card-body text-center p-4">
+                                <h4><?= htmlspecialchars($service['titre'] ?? 'Service') ?></h4>
+                                <?php if (!empty($service['image_path'])): ?>
+                                    <img src="<?= htmlspecialchars($service['image_path']) ?>" 
+                                         class="img-fluid mb-3" 
+                                         alt="<?= htmlspecialchars($service['titre'] ?? 'Image service') ?>">
                                 <?php endif; ?>
-                                <p class="text-muted"><?= htmlspecialchars($service['texte'] ?? 'Description du service', ENT_QUOTES, 'UTF-8') ?></p>
+                                <p class="text-muted"><?= htmlspecialchars($service['texte'] ?? 'Description du service') ?></p>
                                 <a href="#" class="btn btn-outline-<?= $color ?> btn-sm">En savoir plus</a>
                             </div>
                         </div>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <div class="col-12 text-center">
-                        <div class="alert alert-info">Aucun service disponible pour le moment.</div>
                     </div>
-                <?php endif; ?>
-            </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="col-12 text-center">
+                    <div class="alert alert-info">Aucun service disponible pour le moment.</div>
+                </div>
+            <?php endif; ?>
         </div>
-    </section>
+    </div>
+</section>
 
 <!-- Section Contact rapide -->
 <section class="py-5 bg-primary text-white">
@@ -139,13 +89,14 @@ document.addEventListener('DOMContentLoaded', function() {
             <h2>Dernières Actualités</h2>
             <p class="lead">Restez informé de nos dernières nouveautés</p>
         </div>
+        
         <div class="row g-4">
             <?php if (!empty($actualites)): ?>
                 <?php foreach ($actualites as $actualite): ?>
                     <div class="col-md-4">
                         <div class="card h-100 border-0 shadow-sm">
-                            <?php if (!empty($actualite['image'])): ?>
-                                <img src="<?= htmlspecialchars($actualite['image'], ENT_QUOTES, 'UTF-8') ?>" 
+                            <?php if (!empty($actualite['image_path'])): ?>
+                                <img src="<?= htmlspecialchars($actualite['image_path']) ?>" 
                                      class="card-img-top" 
                                      alt="Actualité <?= $actualite['id'] ?>"
                                      style="height: 200px; object-fit: cover;">
@@ -155,14 +106,15 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <i class="far fa-newspaper fa-4x"></i>
                                 </div>
                             <?php endif; ?>
+                            
                             <div class="card-body">
                                 <div class="d-flex mb-2">
                                     <small class="text-muted">
                                         <i class="far fa-calendar me-1"></i> 
-                                        <?= htmlspecialchars($actualite['date_formatee'], ENT_QUOTES, 'UTF-8') ?>
+                                        <?= htmlspecialchars($actualite['date_formatee']) ?>
                                     </small>
                                 </div>
-                                <h5 class="card-title"><?= htmlspecialchars($actualite['titre'], ENT_QUOTES, 'UTF-8') ?></h5>
+                                <h5 class="card-title"><?= htmlspecialchars($actualite['titre']) ?></h5>
                                 <p class="card-text"><?= htmlspecialchars(mb_substr($actualite['texte'], 0, 100)) ?><?= (mb_strlen($actualite['texte']) > 100) ? '...' : '' ?></p>
                             </div>
                             <div class="card-footer bg-transparent border-top-0">
@@ -183,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             <?php endif; ?>
         </div>
+        
         <div class="text-center mt-4">
             <a href="/Altiris/root/frontoffice/actualites" class="btn btn-outline-primary">
                 <i class="fas fa-newspaper me-2"></i> Voir toutes les actualités
@@ -190,57 +143,55 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </section>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const slides = document.querySelectorAll('.db-slide');
-    const dots = document.querySelectorAll('.db-dot');
-    const prevBtn = document.querySelector('.db-prev-btn');
-    const nextBtn = document.querySelector('.db-next-btn');
-    let currentIndex = 0;
-
-    function updateSlider() {
-        slides.forEach((slide, index) => {
-            slide.style.transform = `translateX(-${currentIndex * 100}%)`;
-            slide.classList.toggle('active', index === currentIndex);
-        });
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
-        });
-    }
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateSlider();
-    }
-
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateSlider();
-    }
-
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentIndex = index;
-            updateSlider();
-        });
+    // Animation des annonces
+    gsap.from('.announcement-line', {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        stagger: 0.3,
+        delay: 0.5
     });
 
-    const autoplayInterval = setInterval(nextSlide, 7000);
-    const slider = document.querySelector('.db-slider-container');
+    // Slider annonces
+    const slider = document.querySelector('.announcements-slider');
     if (slider) {
-        slider.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
-        slider.addEventListener('mouseleave', () => {
-            clearInterval(autoplayInterval);
-            autoplayInterval = setInterval(nextSlide, 7000);
-        });
-    }
+        let currentIndex = 0;
+        const items = slider.querySelectorAll('.announcement-item');
+        const indicators = document.querySelectorAll('.slide-indicator');
+        const totalItems = items.length;
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') nextSlide();
-        if (e.key === 'ArrowLeft') prevSlide();
-    });
+        function updateSlider() {
+            items.forEach(item => item.style.display = 'none');
+            indicators.forEach(ind => ind.classList.remove('active'));
+            
+            items[currentIndex].style.display = 'block';
+            indicators[currentIndex].classList.add('active');
+        }
+
+        function nextItem() {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateSlider();
+        }
+
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                currentIndex = parseInt(indicator.dataset.index);
+                updateSlider();
+            });
+        });
+
+        let interval = setInterval(nextItem, 5000);
+        
+        slider.addEventListener('mouseenter', () => clearInterval(interval));
+        slider.addEventListener('mouseleave', () => {
+            clearInterval(interval);
+            interval = setInterval(nextItem, 5000);
+        });
+
+        updateSlider();
+    }
 });
 </script>
