@@ -1,13 +1,14 @@
 <?php
-// D:\wamp64\www\Altiris\root\index.php
+// altiris/root/index.php
 
 require_once __DIR__.'/bootstrap.php';
 
 // Initialisation de la base de données
 try {
+    // Path to db.php relative to index.php
     $dbPath = realpath(__DIR__ . '/../config/db.php');
     if (!$dbPath || !file_exists($dbPath)) {
-        throw new Exception("Fichier de configuration DB introuvable");
+        throw new Exception("Fichier de configuration DB introuvable à " . $dbPath);
     }
     require_once $dbPath;
     
@@ -25,57 +26,55 @@ if (!preg_match('/^[a-z]+$/', $page)) {
     $page = 'home';
 }
 
-// Gestion des routes spéciales
-$specialRoutes = ['actualite', 'contact', 'home'];
+// Define the base namespace for controllers
+$controllerNamespace = 'Altiris\\FrontOffice\\Controllers\\';
+
+// Handle special routes
+$specialRoutes = ['actualite', 'contact', 'home', 'team']; // Add other special routes as needed
+
 if (in_array($page, $specialRoutes)) {
     try {
-        switch ($page) {
-            case 'actualite':
-                $controller = new \Altiris\FrontOffice\Controllers\ActualiteController($db);
-                $controller->show();
-                break;
-                
-            case 'contact':
-                $controller = new \Altiris\FrontOffice\Controllers\ContactController($db);
-                if (isset($_GET['action']) && $_GET['action'] === 'submit') {
-                    $controller->submit();
-                } else {
-                    $controller->index();
-                }
-                break;
-                
-            case 'home':
-                $controller = new \Altiris\FrontOffice\Controllers\HomeController($db);
+        $controllerClass = $controllerNamespace . ucfirst($page) . 'Controller';
+        
+        // Check if the controller class exists before instantiating
+        if (!class_exists($controllerClass)) {
+            throw new Exception("Contrôleur '$controllerClass' non trouvé pour la page '$page'");
+        }
+
+        $controller = new $controllerClass($db);
+
+        // Handle specific actions for contact page
+        if ($page === 'contact' && isset($_GET['action']) && $_GET['action'] === 'submit') {
+            $controller->submit();
+        } else {
+            // Default action for other special routes
+            if (method_exists($controller, 'index')) {
                 $controller->index();
-                break;
+            } else {
+                throw new Exception("Méthode 'index' non disponible pour le contrôleur '$controllerClass'");
+            }
         }
         exit;
     } catch (Exception $e) {
         error_log("Erreur dans le contrôleur $page: " . $e->getMessage());
-        header("Location: /Altiris/root/?page=home");
+        // Redirect to home or show a generic error
+        header("Location: /Altiris/root/?page=home"); // Adjust /Altiris/root/ if your base URL is different
         exit;
     }
 }
 
-// Route standard (pour les autres pages)
-$controllerClass = 'Altiris\\FrontOffice\\Controllers\\'.ucfirst($page).'Controller';
-$controllerFile = __DIR__.'/frontoffice/controllers/'.ucfirst($page).'Controller.php';
+// Standard route (for other pages not in specialRoutes)
+$controllerClass = $controllerNamespace . ucfirst($page) . 'Controller';
 
 try {
-    if (!file_exists($controllerFile)) {
-        throw new Exception("Page non trouvée");
-    }
-
-    require_once $controllerFile;
-
     if (!class_exists($controllerClass)) {
-        throw new Exception("Contrôleur non trouvé");
+        throw new Exception("Contrôleur '$controllerClass' non trouvé");
     }
 
     $controller = new $controllerClass($db);
     
     if (!method_exists($controller, 'index')) {
-        throw new Exception("Méthode non disponible");
+        throw new Exception("Méthode 'index' non disponible pour le contrôleur '$controllerClass'");
     }
     
     $controller->index();
@@ -87,7 +86,7 @@ try {
         die("ERREUR: " . $e->getMessage());
     } else {
         header("HTTP/1.0 404 Not Found");
-        require_once __DIR__.'/frontoffice/views/404.php';
+        require_once __DIR__.'/frontoffice/views/404.php'; // Assuming you have a 404 view
     }
     exit;
 }

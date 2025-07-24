@@ -1,5 +1,8 @@
 <link href="/Altiris/root/frontoffice/css/announcements.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<link href="/Altiris/root/frontoffice/css/testimonials.css" rel="stylesheet">
+<script src="/Altiris/assets/gsap.min.js"></script>
+
+
 
 <!-- Section Slider Annonces -->
 <?php if (!empty($announcements)): ?>
@@ -67,19 +70,108 @@
     </div>
 </section>
 
-<!-- Section Contact rapide -->
-<section class="py-5 bg-primary text-white">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-8">
-                <h3 class="mb-3">Prêt à transformer votre entreprise ?</h3>
-                <p class="mb-md-0">Contactez-nous dès aujourd'hui pour discuter de vos besoins.</p>
-            </div>
-            <div class="col-md-4 text-md-end">
-                <a href="/Altiris/root/frontoffice/contact" class="btn btn-light btn-lg">Nous contacter</a>
-            </div>
+<section id="skills" class="py-5">
+  <div class="container">
+    <h2 class="highlight-purple gradient-title text-center mb-4">Nos Compétences</h2>
+    <p class="text-center mb-5">Découvrez les technologies que nous maîtrisons pour vos projets digitaux</p>
+    <div class="skills-slider-container">
+      <div class="skills-slider d-flex">
+        <!-- Compétences web et mobile -->
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="skill-logo">
+          <h6>HTML5</h6>
         </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="skill-logo">
+          <h6>CSS3</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="skill-logo">
+          <h6>JavaScript</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" class="skill-logo">
+          <h6>TypeScript</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="skill-logo">
+          <h6>React</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" class="skill-logo">
+          <h6>Angular</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" class="skill-logo">
+          <h6>Vue.js</h6>
+        </div>
+        <!-- Compétences backend -->
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="skill-logo">
+          <h6>Node.js</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="skill-logo">
+          <h6>PHP</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="skill-logo">
+          <h6>C#</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt=".NET Core" class="skill-logo">
+          <h6>.NET Core</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="skill-logo">
+          <h6>Java</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="skill-logo">
+          <h6>Python</h6>
+        </div>
+        <!-- Bases de données -->
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="skill-logo">
+          <h6>MySQL</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="skill-logo">
+          <h6>MongoDB</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="skill-logo">
+          <h6>PostgreSQL</h6>
+        </div>
+        <!-- Outils et CMS -->
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress" class="skill-logo">
+          <h6>WordPress</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="skill-logo">
+          <h6>Git</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="skill-logo">
+          <h6>Docker</h6>
+        </div>
+        <!-- Duplication pour l'effet de boucle -->
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="skill-logo">
+          <h6>HTML5</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="skill-logo">
+          <h6>CSS3</h6>
+        </div>
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="skill-logo">
+          <h6>JavaScript</h6>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Section Actualités -->

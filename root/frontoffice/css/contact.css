@@ -1,152 +1,433 @@
-/* D:\wamp64\www\Altiris\root\frontoffice\css\contact.css */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f7fa;
-    color: #333;
-    line-height: 1.6;
-    padding: 0;
-    margin: 0;
+/* altiris/root/frontoffice/css/contact.css */
+
+/* Variables CSS héritées du style principal */
+
+/* Particles Background */
+.Alt-particles-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at 20% 50%, rgba(17, 131, 237, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 132, 18, 0.1) 0%, transparent 50%),
+              var(--background-color);
 }
 
-.contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+.Alt-particles-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 25% 25%, var(--primary-color) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, var(--secondary-color) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.1;
+  animation: Alt-moveParticles 20s linear infinite;
 }
 
-.alert-success {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 1rem;
-    border-radius: 5px;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+@keyframes Alt-moveParticles {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-100px) rotate(360deg); }
 }
 
-.alert-success i {
-    font-size: 1.2rem;
+/* Section Titles */
+.Alt-section-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  background: linear-gradient(to right, #1183ed, #ff8412);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(17, 131, 237, 0.3);
 }
 
-h1 {
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 2rem;
+.Alt-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(to right, #1183ed, #ff8412);
+  border-radius: 2px;
+}
+
+/* Contact Section */
+.Alt-contact-section {
+  padding: 8rem 0 5rem;
+  background: rgb(15 7 22);
+}
+
+/* Logos Section */
+.Alt-logos-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px 0;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  border: 1px solid rgba(17, 131, 237, 0.2);
+}
+
+.Alt-logo-item {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #ccc;
+  margin: 15px;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.Alt-logo-item:hover {
+  color: #1183ed;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Contact Info */
+.contact-info {
+  margin-bottom: 2rem;
+}
+
+.Alt-contact-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, #1183ed, #ff8412);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 15px rgba(17, 131, 237, 0.3);
+}
+
+.Alt-contact-text {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.Alt-contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.Alt-contact-method {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  border: 1px solid rgba(17, 131, 237, 0.2);
+  transition: all 0.3s ease;
+}
+
+.Alt-contact-method:hover {
+  transform: translateX(10px);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  background: rgba(17, 131, 237, 0.1);
+  border-color: #1183ed;
+}
+
+.Alt-contact-method i {
+  font-size: 1.5rem;
+  color: #1183ed;
+  text-shadow: 0 0 10px rgba(17, 131, 237, 0.3);
+}
+
+.Alt-contact-method span {
+  color: #ccc;
+  font-size: 1.1rem;
+}
+
+/* Contact Form */
+.Alt-contact-form {
+  background: #1a1a2e;
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid rgba(17, 131, 237, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.Alt-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.Alt-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  background: linear-gradient(to right, #1183ed, #ff8412);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: 'Orbitron', monospace;
+}
+
+.Alt-cyber-input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid #1183ed;
+  border-radius: 15px;
+  padding: 1rem;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.Alt-cyber-input:focus {
+  outline: none;
+  border-color: #ff8412;
+  box-shadow: 0 0 15px rgba(17, 131, 237, 0.3);
+  background: rgba(17, 131, 237, 0.1);
+}
+
+.Alt-cyber-input::placeholder {
+  color: #ccc;
+  opacity: 0.7;
+}
+
+.Alt-cyber-btn {
+  position: relative;
+  background: linear-gradient(to right, #1183ed, #ff8412);
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: white;
+  font-family: 'Orbitron', monospace;
+}
+
+.Alt-cyber-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.Alt-cyber-btn:hover::before {
+  left: 100%;
+}
+
+.Alt-cyber-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(17, 131, 237, 0.4);
+  color: white;
+}
+
+/* Newsletter Section */
+.Alt-newsletter-container {
+  background: #1a1a2e;
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid rgba(17, 131, 237, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.Alt-newsletter-container h3 {
+  font-family: 'Orbitron', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #1183ed, #ff8412);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.Alt-newsletter-container p {
+  color: #ccc;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Map Section */
+.Alt-map-section {
+  margin-top: 3rem;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+#map {
+  border-radius: 15px;
+}
+
+/* Alerts */
+.Alt-alert-error {
+  background: rgba(220, 53, 69, 0.2);
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.Alt-alert-success {
+  background: rgba(40, 167, 69, 0.2);
+  border: 1px solid #28a745;
+  color: #28a745;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+/* Modal */
+.Alt-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  animation: fadeIn 0.3s;
+}
+
+.Alt-modal-content {
+  background: #1a1a2e;
+  margin: 15% auto;
+  padding: 30px;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(17, 131, 237, 0.3);
+  border: 1px solid rgba(17, 131, 237, 0.2);
+}
+
+.Alt-close-modal {
+  color: #ccc;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.Alt-close-modal:hover {
+  color: #1183ed;
+}
+
+.Alt-modal-icon {
+  font-size: 50px;
+  color: #1183ed;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px rgba(17, 131, 237, 0.5);
+}
+
+.Alt-modal h3 {
+  font-family: 'Orbitron', monospace;
+  background: linear-gradient(to right, #1183ed, #ff8412);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 15px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Ajustement pour le contenu principal */
+main {
+  padding-top: 100px; /* Ajustez selon la hauteur de votre header */
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .Alt-section-title {
     font-size: 2.5rem;
+  }
+  .Alt-contact-title {
+    font-size: 2rem;
+  }
 }
 
-.contact-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.contact-info h2,
-.contact-form h2 {
-    color: #1E90FF;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.contact-description {
-    color: #666;
-    margin-bottom: 2rem;
-}
-
-.addresses {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.address-card {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 4px solid #1E90FF;
-}
-
-.address-card p {
-    margin: 0.5rem 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.address-card i {
-    color: #1E90FF;
-    width: 20px;
-    text-align: center;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.form-group.required label::after {
-    content: " *";
-    color: #e74c3c;
-}
-
-input,
-textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: inherit;
-    transition: border 0.3s;
-}
-
-input:focus,
-textarea:focus {
-    border-color: #1E90FF;
-    outline: none;
-}
-
-textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-.submit-btn {
-    background-color: #1E90FF;
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: background 0.3s;
-}
-
-.submit-btn:hover {
-    background-color: #187bcd;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
-    .contact-section {
-        grid-template-columns: 1fr;
-    }
-    
-    .contact-container {
-        padding: 1rem;
-    }
+  .Alt-section-title {
+    font-size: 2rem;
+  }
+  .Alt-contact-methods {
+    margin-bottom: 2rem;
+  }
+  .Alt-contact-form,
+  .Alt-newsletter-container {
+    padding: 2rem;
+  }
+  .Alt-logos-section {
+    justify-content: center;
+  }
+  .Alt-logo-item {
+    margin: 10px;
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 576px) {
+  .Alt-section-title {
+    font-size: 1.8rem;
+  }
+  .Alt-contact-form,
+  .Alt-newsletter-container {
+    padding: 1.5rem;
+  }
+  .Alt-contact-section {
+    padding: 6rem 0 3rem;
+  }
+  .Alt-brand-logo {
+    font-size: 1.5rem;
+  }
+  .Alt-brand-logo .logo-text {
+    display: none;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(15 7 22);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1183ed;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff8412;
 }
