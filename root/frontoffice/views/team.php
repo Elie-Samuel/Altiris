@@ -1,344 +1,300 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $meta['title'] ?></title>
-    <meta name="description" content="<?= $meta['description'] ?>">
-    
-    <!-- CSS -->
-    <link href="/Altiris/Assets/fontawesome/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/Altiris/Assets/slick.css"/>
-    
-    <style>
-        :root {
-            --primary: #ffffff;  /* Texte blanc */
-            --primary-dark: #e0e0e0;
-            --bg-main: #000000;  /* Noir absolu */
-            --bg-card: #000000;  /* Noir absolu */
-            --text-light: #ffffff;
-            --text-muted: #a0a0a0;
-            --transition: all 0.3s ease;
-        }
+<?php
+// altiris/root/frontoffice/views/team.php
 
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-light);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
+// Les données ($pageTitle, $members) sont fournies par le contrôleur
+$pageTitle = $pageTitle ?? 'Notre Équipe - ALTIRYS'; // Défaut si non fourni
 
-        /* Suppression de toutes les bordures */
-        header, footer, .member-slide {
-            border: none !important;
-        }
+require_once __DIR__ . '/partials/header.php';
+?>
 
-        /* Header intégré */
-        header {
-            background-color: var(--bg-main);
-            padding: 1.5rem 0;
-        }
-
-        /* Main Content */
-        .team-hero {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 3rem 1rem;
-            background-color: var(--bg-main);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-
-        /* Member Card */
-        .member-slide {
-            display: flex !important;
-            background: var(--bg-card);
-            height: 500px;
-            margin: 0 10px;
-            position: relative;
-        }
-
-        /* Image Side */
-        .member-image {
-            flex: 0 0 45%;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .member-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.9) 100%);
-        }
-
-        /* Content Side */
-        .member-content {
-            flex: 1;
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .member-name {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-
-        .member-title {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .member-bio {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
-        }
-
-        .member-contact {
-            margin-top: auto;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .contact-icon {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            color: var(--primary);
-        }
-
-        .contact-link {
-            color: var(--primary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .contact-link:hover {
-            color: var(--primary-dark);
-        }
-
-        .btn-contact {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.9rem 2rem;
-            background: var(--primary);
-            color: #000000;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: var(--transition);
-            margin-top: 2rem;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            text-decoration: none;
-        }
-
-        .btn-contact:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        /* Slider Navigation */
-        .slider-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .slider-btn {
-            width: 44px;
-            height: 44px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-        }
-
-        .slider-btn:hover {
-            background: var(--primary);
-            color: #000000;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--bg-main);
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .member-slide {
-                height: auto;
-                flex-direction: column;
-            }
-            
-            .member-image {
-                height: 350px;
-                flex: 0 0 auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .member-content {
-                padding: 2rem;
-            }
-            
-            .member-name {
-                font-size: 1.8rem;
-            }
-            
-            .section-title h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <?php include __DIR__.'/partials/header.php'; ?>
-    
-    <main class="team-hero">
-        <div class="section-title">
-            <h1>Notre Équipe d'Experts</h1>
-            <p>Des professionnels dévoués à votre réussite digitale</p>
-        </div>
-        
-        <div class="team-slider">
-            <?php foreach ($members as $member): ?>
-            <div class="member-slide">
-                <div class="member-image" 
-                     style="background-image: url('<?= !empty($member['photo']) ? $base_url . htmlspecialchars($member['photo']) : $base_url . 'assets/images/default-profile.jpg' ?>')">
+    <!-- Team Section -->
+    <main>
+        <section id="team" class="team-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="team-section-title">Notre Équipe</h2>
+                        <p class="team-section-subtitle">Des professionnels passionnés à votre service</p>
+                    </div>
                 </div>
                 
-                <div class="member-content">
-                    <div class="member-title">UTILISATEUR</div>
-                    <h2 class="member-name"><?= htmlspecialchars($member['prenom'] . ' ' . htmlspecialchars($member['nom'])) ?></h2>
-                    
-                    <div class="member-bio">
-                        <?= !empty($member['competce_mbr']) ? htmlspecialchars($member['competce_mbr']) : '' ?>
+                <div class="team-slider-container">
+                    <div class="team-slider">
+                        <?php if (!empty($members)): ?>
+                            <?php foreach ($members as $member): ?>
+                            <div class="team-slide" data-member-id="<?= htmlspecialchars($member['id_membre'], ENT_QUOTES, 'UTF-8') ?>">
+                                <div class="team-member-card">
+                                    <div class="member-image-container">
+                                        <div class="member-image" 
+                                             style="background-image: url('<?= !empty($member['photo']) ? '/Altiris/' . htmlspecialchars($member['photo'], ENT_QUOTES, 'UTF-8') : '/Altiris/Assets/Images/default-profile.jpg' ?>')">
+                                        </div>
+                                        <div class="member-overlay">
+                                            <div class="member-social">
+                                                <?php if (!empty($member['email'])): ?>
+                                                <a href="mailto:<?= htmlspecialchars($member['email'], ENT_QUOTES, 'UTF-8') ?>" class="social-link">
+                                                    <i class="fas fa-envelope"></i>
+                                                </a>
+                                                <?php endif; ?>
+                                                
+                                                <?php if (!empty($member['Tel'])): ?>
+                                                <a href="tel:<?= htmlspecialchars($member['Tel'], ENT_QUOTES, 'UTF-8') ?>" class="social-link">
+                                                    <i class="fas fa-phone"></i>
+                                                </a>
+                                                <?php endif; ?>
+                                                
+                                                <?php if (!empty($member['lien_facebook'])): ?>
+                                                <a href="<?= htmlspecialchars($member['lien_facebook'], ENT_QUOTES, 'UTF-8') ?>" target="_blank" class="social-link">
+                                                    <i class="fab fa-facebook"></i>
+                                                </a>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="member-content">
+                                        <div class="member-role"><?= htmlspecialchars($member['role'] ?? 'UTILISATEUR', ENT_QUOTES, 'UTF-8') ?></div>
+                                        <h3 class="member-name"><?= htmlspecialchars($member['prenom'] . ' ' . $member['nom'], ENT_QUOTES, 'UTF-8') ?></h3>
+                                        
+                                        <?php if (!empty($member['competce_mbr'])): ?>
+                                        <p class="member-description"><?= htmlspecialchars($member['competce_mbr'], ENT_QUOTES, 'UTF-8') ?></p>
+                                        <?php endif; ?>
+                                        
+                                        <div class="member-contact-info">
+                                            <?php if (!empty($member['email'])): ?>
+                                            <div class="contact-item">
+                                                <i class="fas fa-envelope"></i>
+                                                <span><?= htmlspecialchars($member['email'], ENT_QUOTES, 'UTF-8') ?></span>
+                                            </div>
+                                            <?php endif; ?>
+                                            
+                                            <?php if (!empty($member['Tel'])): ?>
+                                            <div class="contact-item">
+                                                <i class="fas fa-phone"></i>
+                                                <span><?= htmlspecialchars($member['Tel'], ENT_QUOTES, 'UTF-8') ?></span>
+                                            </div>
+                                            <?php endif; ?>
+                                            
+                                            <?php if (!empty($member['lien_facebook'])): ?>
+                                            <div class="contact-item">
+                                                <i class="fab fa-facebook"></i>
+                                                <span>Profil Facebook</span>
+                                            </div>
+                                            <?php endif; ?>
+                                        </div>
+                                        
+                                        <?php if (!empty($member['email'])): ?>
+                                        <button class="btn-contact open-contact-modal" 
+                                                data-member="<?= htmlspecialchars($member['prenom'] . ' ' . $member['nom'], ENT_QUOTES, 'UTF-8') ?>"
+                                                data-email="<?= htmlspecialchars($member['email'], ENT_QUOTES, 'UTF-8') ?>"
+                                                data-member-id="<?= htmlspecialchars($member['id_membre'], ENT_QUOTES, 'UTF-8') ?>">
+                                            <i class="fas fa-paper-plane"></i>
+                                            <span>Contacter</span>
+                                        </button>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="team-slide">
+                                <div class="no-members">
+                                    <i class="fas fa-users"></i>
+                                    <h3>Aucun membre trouvé</h3>
+                                    <p>L'équipe sera bientôt disponible.</p>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     
-                    <div class="member-contact">
-                        <?php if (!empty($member['email'])): ?>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <a href="mailto:<?= htmlspecialchars($member['email']) ?>" class="contact-link">
-                                <?= htmlspecialchars($member['email']) ?>
-                            </a>
-                        </div>
-                        <?php endif; ?>
-                        
-                        <?php if (!empty($member['Tel'])): ?>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <a href="tel:<?= htmlspecialchars($member['Tel']) ?>" class="contact-link">
-                                <?= htmlspecialchars($member['Tel']) ?>
-                            </a>
-                        </div>
-                        <?php endif; ?>
-                        
-                        <?php if (!empty($member['lien_facebook'])): ?>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-facebook-f"></i>
-                            </div>
-                            <a href="<?= htmlspecialchars($member['lien_facebook']) ?>" target="_blank" class="contact-link">
-                                Profil Facebook
-                            </a>
-                        </div>
-                        <?php endif; ?>
+                    <?php if (!empty($members) && count($members) > 1): ?>
+                    <div class="slider-navigation">
+                        <button class="slider-btn prev-btn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-btn next-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
                     
-                    <a href="<?= $base_url ?>?page=rendez_vous" class="btn-contact">
-                        <i class="fas fa-calendar-alt mr-2"></i> Contacter
-                    </a>
+                    <div class="slider-dots"></div>
+                    <?php endif; ?>
                 </div>
             </div>
-            <?php endforeach; ?>
-        </div>
-        
-        <div class="slider-nav">
-            <button class="slider-btn prev-btn">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="slider-btn next-btn">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
+        </section>
     </main>
 
-    <script src="/Altiris/Assets/jquery-3.6.0.min.js"></script>
-    <script src="/Altiris/Assets/slick.min.js"></script>
+    <!-- Contact Modal -->
+    <div class="contact-modal" id="contactModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-header">
+                <i class="fas fa-paper-plane modal-icon"></i>
+                <h3>Contacter <span id="memberName"></span></h3>
+            </div>
+            <form id="contactForm" method="POST">
+                <input type="hidden" name="member_email" id="memberEmail">
+                <input type="hidden" name="member_name" id="memberNameHidden">
+                
+                <div class="form-group">
+                    <label for="sender_name">Votre nom</label>
+                    <input type="text" id="sender_name" name="sender_name" placeholder="Votre nom" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sender_email">Votre email</label>
+                    <input type="email" id="sender_email" name="sender_email" placeholder="Votre email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Sujet</label>
+                    <input type="text" id="subject" name="subject" placeholder="Sujet du message" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Votre message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span>Envoyer</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
     $(document).ready(function(){
-        $('.team-slider').slick({
-            dots: false,
-            arrows: false,
-            infinite: true,
-            speed: 400,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: false,
-            fade: false
-        });
-
-        $('.prev-btn').click(function(){
-            $('.team-slider').slick('slickPrev');
+        let currentSlide = 0;
+        const $slider = $('.team-slider');
+        const $slides = $('.team-slide');
+        const totalSlides = $slides.length;
+        
+        if (totalSlides > 1) {
+            // Créer les points de navigation
+            function createDots() {
+                for(let i = 0; i < totalSlides; i++) {
+                    $('.slider-dots').append(`<span class="dot ${i === 0 ? 'active' : ''}" data-slide="${i}"></span>`);
+                }
+            }
+            
+            // Mise à jour du slider
+            function updateSlider() {
+                $slider.css('transform', `translateX(${-currentSlide * 100}%)`);
+                $('.dot').removeClass('active');
+                $(`.dot[data-slide="${currentSlide}"]`).addClass('active');
+            }
+            
+            // Suivante
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlider();
+            }
+            
+            // Précédente
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlider();
+            }
+            
+            // Événements
+            $('.next-btn').click(nextSlide);
+            $('.prev-btn').click(prevSlide);
+            
+            $(document).on('click', '.dot', function() {
+                currentSlide = parseInt($(this).data('slide'));
+                updateSlider();
+            });
+            
+            // Initialisation
+            createDots();
+            updateSlider();
+        }
+        
+        // Contact modal functionality
+        $('.open-contact-modal').click(function(){
+            const memberName = $(this).data('member');
+            const memberEmail = $(this).data('email');
+            
+            $('#memberName').text(memberName);
+            $('#memberEmail').val(memberEmail);
+            $('#memberNameHidden').val(memberName);
+            
+            $('#contactModal').fadeIn(300, function() {
+                $('.modal-content').addClass('show');
+            });
+            $('body').addClass('modal-open');
         });
         
-        $('.next-btn').click(function(){
-            $('.team-slider').slick('slickNext');
+        $('.close-modal, .modal-overlay').click(function(){
+            $('.modal-content').removeClass('show');
+            setTimeout(function() {
+                $('#contactModal').fadeOut(300);
+                $('body').removeClass('modal-open');
+            }, 300);
         });
+        
+        $('.modal-content').click(function(e){
+            e.stopPropagation();
+        });
+        
+        // AJAX form submission
+        $('#contactForm').submit(function(e){
+            e.preventDefault();
+            
+            const formData = $(this).serialize();
+            
+            $.ajax({
+                type: 'POST',
+                url: '/Altiris/root/frontoffice/send_email.php',
+                data: formData,
+                dataType: 'json',
+                beforeSend: function() {
+                    $('.submit-btn').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Envoi...');
+                },
+                success: function(response) {
+                    if (response.success) {
+                        $('.modal-content').html(`
+                            <div class="success-message">
+                                <i class="fas fa-check-circle"></i>
+                                <h3>Message envoyé!</h3>
+                                <p>Votre message a été envoyé avec succès.</p>
+                                <button class="close-success-btn">Fermer</button>
+                            </div>
+                        `);
+                        
+                        $('.close-success-btn').click(function() {
+                            $('.modal-content').removeClass('show');
+                            setTimeout(function() {
+                                $('#contactModal').fadeOut(300);
+                                $('body').removeClass('modal-open');
+                                location.reload();
+                            }, 300);
+                        });
+                    } else {
+                        alert(response.message || 'Une erreur est survenue');
+                        $('.submit-btn').prop('disabled', false).html('<span>Envoyer</span><i class="fas fa-paper-plane"></i>');
+                    }
+                },
+                error: function() {
+                    alert('Une erreur est survenue. Veuillez réessayer.');
+                    $('.submit-btn').prop('disabled', false).html('<span>Envoyer</span><i class="fas fa-paper-plane"></i>');
+                }
+            });
+        });
+
+        // Fonction pour faire défiler vers un membre (pour la recherche)
+        window.scrollToMember = function(memberId) {
+            const $memberElement = $(`[data-member-id="${memberId}"]`);
+            if ($memberElement.length) {
+                const slideIndex = $memberElement.index();
+                currentSlide = slideIndex;
+                updateSlider();
+                $memberElement.addClass('highlight');
+                setTimeout(() => $memberElement.removeClass('highlight'), 2000);
+            }
+        };
     });
     </script>
-</body>
-</html>

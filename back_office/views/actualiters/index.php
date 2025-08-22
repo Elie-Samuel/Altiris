@@ -1,15 +1,19 @@
 <?php
+ob_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['loggedin']) || !isset($_SESSION['user_id'])) {
+    header("Location: /Altiris/login.php");
+    exit;
+}
 require_once '../../components/header.php';
 require_once dirname(__DIR__, 2) . '/controllers/ActualiterController.php';
 $controller = new ActualiterController();
 $actualiters = $controller->index();
-
-if (isset($_GET['delete'])) {
-    $controller->delete($_GET['delete']);
-}
 ?>
 <h2>Gestion des Actualités</h2>
-<a href="create.php" class="btn btn-primary mb-3">Ajouter une actualité</a>
+<a href="/Altiris/actualites/ajouter" class="btn btn-primary mb-3">Ajouter une actualité</a>
 <div class="card-container">
     <?php if (!$actualiters): ?>
         <div class="card">
@@ -35,11 +39,10 @@ if (isset($_GET['delete'])) {
                     <?php endif; ?>
                 </div>
                 <div class="card-actions">
-                    <a href="edit.php?id=<?php echo $actualiter['id']; ?>" class="btn btn-sm btn-warning">Modifier</a>
-                    <a href="?delete=<?php echo $actualiter['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Supprimer ?');">Supprimer</a>
+                <a href="/Altiris/actualites/modifier/<?php echo isset($actualiter['id']) ? $actualiter['id'] : ''; ?>" class="btn btn-warning"><i class="fas fa-edit"></i> Modifier</a>
+                <a href="delete.php?id=<?php echo isset($actualiter['id']) ? $actualiter['id'] : ''; ?>" class="btn btn-danger" onclick="return confirm('Confirmer la suppression ?');"><i class="fas fa-trash"></i> Supprimer</a>
                 </div>
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
-<?php require_once '../../components/footer.php'; ?>

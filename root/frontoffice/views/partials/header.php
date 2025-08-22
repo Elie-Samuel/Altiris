@@ -3,210 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALTIRYS - FrontOffice</title>
+    <title><?= isset($pageTitle) ? htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8') : 'ALTIRYS - Agence Digitale' ?></title>
+    <meta name="description" content="<?= isset($pageDescription) ? htmlspecialchars($pageDescription, ENT_QUOTES, 'UTF-8') : 'ALTIRYS - Votre partenaire digital de confiance pour le développement web, mobile, design et solutions numériques.' ?>">
+    <meta name="keywords" content="développement web, application mobile, design, SEO, ALTIRYS, agence digitale">
+    <meta name="author" content="ALTIRYS">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?= isset($_SERVER['REQUEST_URI']) ? 'https://' . htmlspecialchars($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8') : '' ?>">
+    <meta property="og:title" content="<?= isset($pageTitle) ? htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8') : 'ALTIRYS' ?>">
+    <meta property="og:description" content="<?= isset($pageDescription) ? htmlspecialchars($pageDescription, ENT_QUOTES, 'UTF-8') : 'Votre partenaire digital de confiance' ?>">
+    <meta property="og:image" content="/Altiris/Assets/Images/logo_Altirys.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?= isset($_SERVER['REQUEST_URI']) ? 'https://' . htmlspecialchars($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8') : '' ?>">
+    <meta property="twitter:title" content="<?= isset($pageTitle) ? htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8') : 'ALTIRYS' ?>">
+    <meta property="twitter:description" content="<?= isset($pageDescription) ? htmlspecialchars($pageDescription, ENT_QUOTES, 'UTF-8') : 'Votre partenaire digital de confiance' ?>">
+    <meta property="twitter:image" content="/Altiris/Assets/Images/logo_Altirys.png">
+    
+    <link rel="icon" href="/Altiris/Assets/Images/logo_Altirys.png" type="image/x-icon">
+    <link rel="canonical" href="<?= isset($_SERVER['REQUEST_URI']) ? 'https://' . htmlspecialchars($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8') : '' ?>">
+    
+    <!-- Bootstrap CSS -->
     <link href="/Altiris/Assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
     <link href="/Altiris/Assets/fontawesome/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/Altiris/Assets/slick-theme.css"/>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Slick Carousel -->
     <link rel="stylesheet" type="text/css" href="/Altiris/Assets/slick.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #1183ed;
-            --secondary-color: #ff8412;
-            --dark-color: #1a1a2e;
-            --light-color: #ccc;
-            --lighter-color: #eee;
-            --background-color: rgb(15, 7, 22);
-            --text-color: #fff;
-            --gradient: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            --box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-            --transition: all 0.3s ease;
-            --navbar-bg: rgba(17, 17, 17, 0.95);
-            --navbar-text: #ffffff;
-            --navbar-hover: #FFCC00;
-            --navbar-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            padding-top: 100px;
-            scroll-behavior: smooth;
-        }
-
-        /* Navbar */
-        .navbar-uf {
-            background: var(--navbar-bg);
-            box-shadow: var(--navbar-shadow);
-            padding: 1rem 0;
-            transition: var(--transition);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(17, 131, 237, 0.2);
-        }
-
-        .navbar-uf.scrolled {
-            padding: 0.5rem 0;
-            background: rgba(10, 10, 10, 0.98);
-        }
-
-        /* Logo */
-        .navbar-uf .navbar-brand .logo-container {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 2px solid var(--primary-color);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            box-shadow: 0 0 15px rgba(17, 131, 237, 0.3);
-        }
-
-        .navbar-uf .navbar-brand .logo-container:hover {
-            transform: scale(1.1);
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 20px rgba(255, 132, 18, 0.4);
-        }
-
-        .navbar-uf .navbar-brand .logo-rounded {
-            width: 80%;
-            height: 80%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        /* Navigation */
-        .navbar-uf .navbar-nav {
-            gap: 0.5rem;
-        }
-
-        .navbar-uf .nav-link {
-            color: var(--lighter-color);
-            font-weight: 500;
-            padding: 0.5rem 1.25rem;
-            margin: 0 0.25rem;
-            border-radius: 30px;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .navbar-uf .nav-link::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: var(--transition);
-        }
-
-        .navbar-uf .nav-link:hover,
-        .navbar-uf .nav-link.active {
-            color: var(--text-color);
-        }
-
-        .navbar-uf .nav-link:hover::before,
-        .navbar-uf .nav-link.active::before {
-            width: 100%;
-        }
-
-        .navbar-uf .nav-link i {
-            margin-right: 5px;
-            transition: var(--transition);
-        }
-
-        .navbar-uf .nav-link:hover i {
-            color: var(--secondary-color);
-        }
-
-        /* Mobile */
-        @media (max-width: 991.98px) {
-            .navbar-uf .navbar-collapse {
-                background: rgba(10, 10, 10, 0.98);
-                padding: 1rem;
-                border-radius: 0 0 10px 10px;
-                margin-top: 10px;
-            }
-            
-            .navbar-uf .nav-link {
-                padding: 0.75rem 1rem;
-                margin: 0.25rem 0;
-            }
-        }
-
-        /* Toggler */
-        .navbar-toggler {
-            border: none;
-            outline: none;
-            padding: 0.5rem;
-        }
-
-        .navbar-toggler-icon {
-            background-image: none;
-            width: 24px;
-            height: 2px;
-            background-color: var(--text-color);
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .navbar-toggler-icon::before,
-        .navbar-toggler-icon::after {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 2px;
-            background-color: var(--text-color);
-            left: 0;
-            transition: var(--transition);
-        }
-
-        .navbar-toggler-icon::before {
-            top: -6px;
-        }
-
-        .navbar-toggler-icon::after {
-            top: 6px;
-        }
-
-        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-            background-color: transparent;
-        }
-
-        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
-            transform: rotate(45deg);
-            top: 0;
-        }
-
-        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
-            transform: rotate(-45deg);
-            top: 0;
-        }
-
-        /* Content */
-        .content-offset {
-            padding-top: 120px;
-            transition: var(--transition);
-        }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/Altiris/Assets/slick-theme.css"/>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/Altiris/root/frontoffice/css/global-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/Altiris/root/frontoffice/css/header.css"/>
+    <link href="/Altiris/root/frontoffice/css/home.css" rel="stylesheet">
+    <link href="/Altiris/root/frontoffice/css/blog.css" rel="stylesheet">
+    <link href="/Altiris/root/frontoffice/css/team.css" rel="stylesheet">
+    <link href="/Altiris/root/frontoffice/css/apropos.css" rel="stylesheet">
+    <link href="/Altiris/root/frontoffice/css/contact.css" rel="stylesheet">
+    <link href="/Altiris/root/frontoffice/css/footer.css" rel="stylesheet">
 </head>
+
 <body>
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle-container">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Changer le thème">
+            <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+    </div>
+
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-uf fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="/Altiris/root/frontoffice/home">
+            <a class="navbar-brand" href="/Altiris/home">
                 <div class="logo-container">
                     <img src="/Altiris/Assets/Images/logo_Altirys.png" alt="Logo ALTIRYS" class="logo-rounded">
                 </div>
@@ -219,65 +73,205 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/Altiris/root/frontoffice/home">
+                        <a class="nav-link <?= (isset($_GET['page']) && $_GET['page'] === 'home') ? 'active' : '' ?>" href="/Altiris/home">
                             <i class="fas fa-home me-1"></i> Accueil
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Altiris/root/?page=team">
+                        <a class="nav-link <?= (isset($_GET['page']) && $_GET['page'] === 'team') ? 'active' : '' ?>" href="/Altiris/team">
                             <i class="fas fa-users me-1"></i> Notre Équipe
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Altiris/root/frontoffice/apropos">
+                        <a class="nav-link <?= (isset($_GET['page']) && $_GET['page'] === 'apropos') ? 'active' : '' ?>" href="/Altiris/apropos">
                             <i class="fas fa-info-circle me-1"></i> À propos
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= (isset($_GET['page']) && $_GET['page'] === 'contact') ? 'active' : '' ?>" href="/Altiris/contact">
+                            <i class="fas fa-address-book me-1"></i> Contact
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= (isset($_GET['page']) && $_GET['page'] === 'blog') ? 'active' : '' ?>" href="/Altiris/blog">
+                            <i class="fas fa-blog me-1"></i> Blog
+                        </a>
+                    </li>
                 </ul>
+                
+                <!-- Search Area -->
+                <div class="search-zone" id="searchZone">
+                    <div class="position-relative">
+                        <input type="text" class="search-input" id="memberSearch" placeholder="Rechercher un membre..." aria-label="Rechercher un membre">
+                        <div class="search-results" id="searchResults"></div>
+                    </div>
+                </div>
+                
+                <!-- Dark Mode Toggle -->
+                <button type="button" class="dark-mode-toggle" id="darkModeToggle" title="Basculer en mode sombre" aria-label="Basculer entre mode sombre et clair">
+                    <i class="fas fa-moon" id="darkModeIcon"></i>
+                </button>
             </div>
         </div>
     </nav>
     
+    <!-- Main Content -->
     <div class="pt-5 mt-3 content-offset fade-in">
-        <!-- Contenu principal ici -->
+        <!-- Content will be inserted here -->
     </div>
 
-    <!-- Scripts -->
-    <script src="/Altiris/Assets/jquery-3.6.0.min.js"></script>
-    <script src="/Altiris/Assets/slick.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
     <script src="/Altiris/Assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Slick Carousel JS -->
+    <script type="text/javascript" src="/Altiris/Assets/slick.min.js"></script>
+
     <script>
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar-uf');
-            const content = document.querySelector('.content-offset');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-                content.style.paddingTop = '90px';
-            } else {
-                navbar.classList.remove('scrolled');
-                content.style.paddingTop = '120px';
+        // Gestion du thème - Version vanilla JavaScript (fonctionne sans connexion)
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const darkModeIcon = document.getElementById('darkModeIcon');
+            const body = document.body;
+            
+            // Fonction pour appliquer le thème
+            function applyTheme(isDark) {
+                if (isDark) {
+                    body.classList.add('dark-mode');
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fa-moon');
+                        themeIcon.classList.add('fa-sun');
+                    }
+                    if (darkModeIcon) {
+                        darkModeIcon.classList.remove('fa-moon');
+                        darkModeIcon.classList.add('fa-sun');
+                    }
+                } else {
+                    body.classList.remove('dark-mode');
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fa-sun');
+                        themeIcon.classList.add('fa-moon');
+                    }
+                    if (darkModeIcon) {
+                        darkModeIcon.classList.remove('fa-sun');
+                        darkModeIcon.classList.add('fa-moon');
+                    }
+                }
+            }
+
+            // Initialiser le thème
+            function initTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const isDark = savedTheme === 'dark' || (!savedTheme && systemPrefersDark);
+                applyTheme(isDark);
+            }
+            
+            initTheme();
+            
+            // Fonction pour basculer le thème
+            function toggleTheme() {
+                const isDark = body.classList.contains('dark-mode');
+                applyTheme(!isDark);
+                localStorage.setItem('theme', !isDark ? 'dark' : 'light');
+            }
+            
+            // Event listeners pour les boutons
+            if (themeToggle) {
+                themeToggle.addEventListener('click', toggleTheme);
+            }
+            
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', toggleTheme);
             }
         });
 
-        // Animation for elements when they come into view
-        document.addEventListener('DOMContentLoaded', function() {
-            const animateElements = document.querySelectorAll('.fade-in');
+        // Gestion de la recherche avec jQuery (si disponible)
+        jQuery(document).ready(function($) {
+            // Vérifier si jQuery est chargé
+            if (typeof $ === 'undefined') {
+                console.warn('jQuery non disponible, certaines fonctionnalités peuvent être limitées.');
+            }
+
+            // Vérifier si nous sommes sur la page team
+            const isTeamPage = window.location.pathname.includes('/team');
+            const $searchZone = $('#searchZone');
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
+            if (isTeamPage) {
+                $searchZone.addClass('show');
+                initMemberSearch();
+            }
+
+            function initMemberSearch() {
+                const $searchInput = $('#memberSearch');
+                const $searchResults = $('#searchResults');
+                
+                $searchInput.on('input', function() {
+                    const query = this.value.trim();
+                    
+                    if (query.length < 2) {
+                        $searchResults.hide().empty();
+                        return;
+                    }
+                    
+                    $.ajax({
+                        url: '/Altiris/root/frontoffice/search_members.php',
+                        method: 'GET',
+                        data: { q: query },
+                        dataType: 'json',
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+                        success: function(data) {
+                            displaySearchResults(data);
+                        },
+                        error: function(error) {
+                            console.error('Erreur de recherche:', error);
+                            $searchResults.html('<div class="search-result-item">Erreur lors de la recherche</div>').show();
+                        }
+                    });
+                });
+                
+                $(document).on('click', function(e) {
+                    if (!$searchInput.is(e.target) && !$searchResults.is(e.target) && $searchResults.has(e.target).length === 0) {
+                        $searchResults.hide().empty();
                     }
                 });
-            }, { threshold: 0.1 });
+            }
             
-            animateElements.forEach(el => {
-                el.style.opacity = 0;
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-                observer.observe(el);
-            });
+            function displaySearchResults(members) {
+                const $searchResults = $('#searchResults');
+                
+                if (!Array.isArray(members) || members.length === 0) {
+                    $searchResults.html('<div class="search-result-item">Aucun membre trouvé</div>').show();
+                } else {
+                    $searchResults.html(members.map(member => `
+                        <div class="search-result-item" onclick="scrollToMember('${member.id_membre}')">
+                            <div class="member-name">${sanitizeHTML(member.prenom + ' ' + member.nom)}</div>
+                            <div class="member-role">${sanitizeHTML(member.role)}</div>
+                        </div>
+                    `).join('')).show();
+                }
+            }
+            
+            function scrollToMember(memberId) {
+                $('#searchResults').hide().empty();
+                const $memberElement = $(`[data-member-id="${memberId}"]`);
+                if ($memberElement.length) {
+                    const slideIndex = $memberElement.index();
+                    $('.team-slider').slick('slickGoTo', slideIndex);
+                    $memberElement.addClass('highlight');
+                    setTimeout(() => $memberElement.removeClass('highlight'), 2000);
+                }
+            }
+
+            function sanitizeHTML(str) {
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
         });
     </script>
 </body>

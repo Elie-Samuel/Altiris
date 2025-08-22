@@ -1,4 +1,12 @@
 <?php
+ob_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['loggedin']) || !isset($_SESSION['user_id'])) {
+    header("Location: /Altiris/connexion");
+    exit;
+}
 require_once '../../components/header.php';
 require_once dirname(__DIR__, 2) . '/controllers/MembreController.php';
 
@@ -7,13 +15,13 @@ $error = null;
 
 $id = $_GET['id'] ?? null;
 if (!$id || !is_numeric($id)) {
-    header("Location: index.php");
+    header("Location: /Altiris/membres");
     exit;
 }
 
 $membre = $controller->edit($id);
 if ($membre === false || !is_array($membre)) {
-    header("Location: index.php");
+    header("Location: /Altiris/membres");
     exit;
 }
 
@@ -21,125 +29,368 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $controller->edit($id);
     if ($result === true) {
         $_SESSION['success'] = "Membre mis à jour avec succès";
-        header("Location: index.php");
+        header("Location: /Altiris/membres");
         exit;
     } else {
         $error = $result;
-        // Réutiliser $membre existant au lieu de recharger
     }
 }
 ?>
 
-<h2>Modifier le membre #<?= htmlspecialchars($membre['id_membre'] ?? 'Invalide') ?></h2>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier membre - Altiris</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #004aad;
+            --secondary-color: #ff6200;
+            --dark-bg: #0f172a;
+            --light-text: #f9f9f9;
+            --error-color: #dc3545;
+            --success-color: #28a745;
+        }
 
-<?php if ($error): ?>
-    <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
-<?php endif; ?>
 
-<form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label class="form-label">Prénom *</label>
-                <input type="text" name="prenom" class="form-control" 
-                       value="<?= htmlspecialchars($membre['prenom'] ?? '') ?>" required>
-                <div class="invalid-feedback">Veuillez renseigner le prénom</div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label class="form-label">Nom *</label>
-                <input type="text" name="nom" class="form-control" 
-                       value="<?= htmlspecialchars($membre['nom'] ?? '') ?>" required>
-                <div class="invalid-feedback">Veuillez renseigner le nom</div>
-            </div>
-        </div>
-    </div>
+        .modal-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: var(--dark-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border: 1px solid var(--primary-color);
+        }
 
-    <div class="mb-3">
-        <label class="form-label">Email *</label>
-        <input type="email" name="email" class="form-control" 
-               value="<?= htmlspecialchars($membre['email'] ?? '') ?>" required>
-        <div class="invalid-feedback">Veuillez renseigner un email valide</div>
-    </div>
+        h2 {
+            color: var(--light-text);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label class="form-label">Rôle</label>
-                <select name="role" class="form-select">
-                    <option value="utilisateur" <?= isset($membre['role']) && $membre['role'] === 'utilisateur' ? 'selected' : '' ?>>Utilisateur</option>
-                    <option value="admin" <?= isset($membre['role']) && $membre['role'] === 'admin' ? 'selected' : '' ?>>Administrateur</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label class="form-label">Statut</label>
-                <select name="statut" class="form-select">
-                    <option value="actif" <?= isset($membre['statut']) && $membre['statut'] === 'actif' ? 'selected' : '' ?>>Actif</option>
-                    <option value="inactif" <?= isset($membre['statut']) && $membre['statut'] === 'inactif' ? 'selected' : '' ?>>Inactif</option>
-                </select>
-            </div>
-        </div>
-    </div>
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+        }
 
-    <div class="mb-3">
-        <label class="form-label">Téléphone</label>
-        <input type="tel" name="Tel" class="form-control" 
-               value="<?= htmlspecialchars($membre['Tel'] ?? '') ?>">
-    </div>
+        .alert-danger {
+            background-color: var(--error-color);
+            color: white;
+        }
 
-    <div class="mb-3">
-        <label class="form-label">Compétences</label>
-        <textarea name="competce_mbr" class="form-control" rows="3"><?= htmlspecialchars($membre['competce_mbr'] ?? '') ?></textarea>
-    </div>
+        .form-label {
+            color: var(--light-text);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
 
-    <div class="mb-3">
-        <label class="form-label">Lien Facebook</label>
-        <input type="url" name="lien_facebook" class="form-control" 
-               value="<?= htmlspecialchars($membre['lien_facebook'] ?? '') ?>">
-    </div>
+        .form-control, .form-select {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid #334155;
+            background-color: #1e293b;
+            color: #fffefeff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
 
-    <div class="mb-3">
-        <label class="form-label">Photo</label>
-        <?php if (isset($membre['photo']) && !empty($membre['photo'])): ?>
-            <div class="mb-2">
-                <img src="/Altiris/<?= htmlspecialchars($membre['photo']) ?>" 
-                     alt="Photo de <?= htmlspecialchars($membre['prenom'] ?? 'Membre') ?>" 
-                     width="100" class="img-thumbnail object-fit-cover">
-                <div class="form-check mt-2">
-                    <input class="form-check-input" type="checkbox" name="remove_photo" id="remove_photo">
-                    <label class="form-check-label" for="remove_photo">Supprimer la photo actuelle</label>
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(0, 74, 173, 0.25);
+            outline: none;
+        }
+
+        .form-control::placeholder {
+            color: #666666;
+        }
+
+        .invalid-feedback {
+            color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        .was-validated .form-control:invalid,
+        .was-validated .form-select:invalid {
+            border-color: var(--error-color);
+            background-color: #fff;
+        }
+
+        .was-validated .form-control:invalid:focus,
+        .was-validated .form-select:invalid:focus {
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #003d8f;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #475569;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #334155;
+            transform: translateY(-2px);
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+
+        .col-md-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding: 0 10px;
+        }
+
+        .mb-3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .text-muted {
+            color: #94a3b8 !important;
+            font-size: 0.85rem;
+        }
+
+        .img-thumbnail {
+            border: 2px solid var(--secondary-color);
+            border-radius: 5px;
+            padding: 0.25rem;
+            background-color: #fff;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-check-input {
+            width: 1em;
+            height: 1em;
+            margin-top: 0;
+        }
+
+        .form-check-label {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .col-md-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            
+            .modal-container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+        }
+
+        /* Animation pour le modal */
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-container {
+            animation: modalFadeIn 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="modal-container">
+        <h2>Modifier le membre</h2>
+
+        <?php if ($error): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
+
+        <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Nom </label>
+                        <input type="text" name="nom" class="form-control" 
+                               value="<?= htmlspecialchars($membre['nom'] ?? '') ?>" 
+                               pattern="[A-Za-zÀ-ÿ\s\-']+" 
+                               title="Seules les lettres, espaces, traits d'union et apostrophes sont autorisés"
+                               required>
+                        <div class="invalid-feedback">Veuillez renseigner un nom valide</div>
+                    </div>
+                </div>
+                      <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Prénoms </label>
+                        <input type="text" name="prenom" class="form-control" 
+                               value="<?= htmlspecialchars($membre['prenom'] ?? '') ?>" 
+                               pattern="[A-Za-zÀ-ÿ\s\-']+" 
+                               title="Seules les lettres, espaces, traits d'union et apostrophes sont autorisés"
+                               required>
+                        <div class="invalid-feedback">Veuillez renseigner un prénom valide</div>
+                    </div>
                 </div>
             </div>
-        <?php endif; ?>
-        <input type="file" name="photo" class="form-control" accept="image/jpeg,image/png">
-        <small class="form-text text-muted">Laisser vide pour conserver la photo actuelle</small>
-        <div class="invalid-feedback">Veuillez sélectionner une photo valide</div>
+
+            <div class="mb-3">
+                <label class="form-label">Email </label>
+                <input type="email" name="email" class="form-control" 
+                       value="<?= htmlspecialchars($membre['email'] ?? '') ?>" required>
+                <div class="invalid-feedback">Veuillez renseigner un email valide</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                        <div class="mb-3">
+                        <label class="form-label">Texte</label>
+                        <input type="text" name="role" class="form-control" 
+                               value="<?= htmlspecialchars($membre['role'] ?? '') ?>" 
+                               pattern="[A-Za-zÀ-ÿ\s\-']+" 
+                               title="Seules les lettres, espaces, traits d'union et apostrophes sont autorisés"
+                               required>
+                        <div class="invalid-feedback">Veuillez renseigner un nom valide</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Téléphone</label>
+                        <input type="tel" name="Tel" class="form-control" 
+                               value="<?= htmlspecialchars($membre['Tel'] ?? '') ?>" 
+                               pattern="[0-9]+" 
+                               title="Seuls les chiffres sont autorisés">
+                        <div class="invalid-feedback">Veuillez renseigner un numéro valide (chiffres seulement)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Compétences</label>
+                <textarea name="competce_mbr" class="form-control" rows="3"><?= htmlspecialchars($membre['competce_mbr'] ?? '') ?></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Lien Facebook</label>
+                <input type="url" name="lien_facebook" class="form-control" 
+                       value="<?= htmlspecialchars($membre['lien_facebook'] ?? '') ?>">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Photo</label>
+                <?php if (isset($membre['photo']) && !empty($membre['photo'])): ?>
+                    <div class="mb-2">
+                        <img src="/Altiris/<?= htmlspecialchars($membre['photo']) ?>" 
+                             alt="Photo de <?= htmlspecialchars($membre['prenom'] ?? 'Membre') ?>" 
+                             width="100" class="img-thumbnail">
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="checkbox" name="remove_photo" id="remove_photo">
+                            <label class="form-check-label" for="remove_photo">Supprimer la photo actuelle</label>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <input type="file" name="photo" class="form-control" accept="image/jpeg,image/png">
+                <small class="text-muted">Laisser vide pour conserver la photo actuelle</small>
+                <div class="invalid-feedback">Veuillez sélectionner une photo valide</div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+                <a href="/Altiris/membres" class="btn btn-secondary">Annuler</a>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+        </form>
     </div>
 
-    <button type="submit" class="btn btn-primary">Enregistrer</button>
-    <a href="index.php" class="btn btn-secondary">Annuler</a>
-</form>
+    <script>
+    // Activation de la validation
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('needs-validation');
+            Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
 
-<script>
-// Activation de la validation Bootstrap
-(function() {
-    'use strict';
-    window.addEventListener('load', function() {
-        var forms = document.getElementsByClassName('needs-validation');
-        Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
+    // Animation des boutons
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
         });
-    }, false);
-})();
-</script>
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
 
-<?php require_once '../../components/footer.php'; ?>
+    // Contrôle de saisie pour les champs nom et prénom
+    document.querySelectorAll('input[name="nom"], input[name="prenom"], input[name="role"]').forEach(input => {
+        input.addEventListener('keypress', function(e) {
+            // Autorise seulement les lettres, espaces, apostrophes et traits d'union
+            if (!/[A-Za-zÀ-ÿ\s\-\']/.test(e.key)) {
+                e.preventDefault();
+            }
+        });
+    });
+
+    // Contrôle de saisie pour le champ téléphone
+    document.querySelector('input[name="Tel"]').addEventListener('keypress', function(e) {
+        // Autorise seulement les chiffres
+        if (!/[0-9]/.test(e.key)) {
+            e.preventDefault();
+        }
+    });
+
+    // Contrôle de saisie pour le champ compétences
+    document.querySelector('textarea[name="competce_mbr"]').addEventListener('keypress', function(e) {
+        // Autorise seulement les lettres, espaces, apostrophes et traits d'union
+        if (!/[A-Za-zÀ-ÿ\s\-\']/.test(e.key)) {
+            e.preventDefault();
+        }
+    });
+    </script>
+</body>
+</html>
+<?php ob_end_flush(); ?>

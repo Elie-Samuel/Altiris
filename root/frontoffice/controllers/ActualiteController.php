@@ -1,107 +1,103 @@
 <?php
 namespace Altiris\FrontOffice\Controllers;
 
-use \PDO;
+use PDO;
 use PDOException;
-use Exception;
 
 class ActualiteController {
     private $db;
 
-    public function __construct(\PDO $db) {
+    public function __construct(PDO $db) {
         $this->db = $db;
     }
 
-    /**
-     * Affiche une actualité spécifique
-     */
-    public function show() {
-        try {
-            $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-            if ($id <= 0) {
-                throw new Exception("ID d'actualité invalide");
-            }
-
-            $stmt = $this->db->prepare("SELECT id, texte, Date as date, image FROM actualiter WHERE id = ?");
-            $stmt->execute([$id]);
-            $actualite = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if (!$actualite) {
-                throw new Exception("Actualité non trouvée");
-            }
-
-            $actualite['date_formatee'] = $actualite['date'] ? date('d/m/Y', strtotime($actualite['date'])) : 'Date non disponible';
-            $actualite['titre'] = $this->extractTitle($actualite['texte']);
-            $actualite['image_path'] = $this->getImagePath($actualite['image']);
-
-            $this->renderView(['actualite' => $actualite]);
-        } catch (Exception $e) {
-            error_log("Erreur ActualiteController::show: " . $e->getMessage());
-            header("HTTP/1.0 404 Not Found");
-            require __DIR__ . '/../views/404.php';
-        }
-    }
-
-    /**
-     * Affiche la liste des actualités
-     */
     public function index() {
         try {
-            $stmt = $this->db->query("SELECT id, texte, Date as date, image FROM actualiter ORDER BY Date DESC");
-            $actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $query = $this->db->prepare("
+                SELECT 
+                    id,
+                    Titre AS title,
+                    image AS image_path,
+                    texte AS excerpt,
+                    Date AS created_at
+                FROM actualiter
+                ORDER BY Date DESC
+            ");
+            $query->execute();
+            $actualites = $query->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($actualites as &$actualite) {
-                $actualite['date_formatee'] = $actualite['date'] ? date('d/m/Y', strtotime($actualite['date'])) : 'Date non disponible';
-                $actualite['titre'] = $this->extractTitle($actualite['texte']);
-                $actualite['image_path'] = $this->getImagePath($actualite['image']);
-                $actualite['extrait'] = $this->createExcerpt($actualite['texte']);
+                $actualite['image_path'] = $this->getImagePath($actualite['image_path']);
+                if (strlen($actualite['excerpt']) > 120) {
+                    $actualite['excerpt'] = substr($actualite['excerpt'], 0, 120) . '...';
+                }
             }
+            error_log("ActualiteController: Actualités récupérées - " . count($actualites) . " éléments");
 
-            $this->renderView(['actualites' => $actualites], 'actualites');
+            require __DIR__ . '/../views/actualites.php';
         } catch (PDOException $e) {
-            error_log("Erreur ActualiteController::index: " . $e->getMessage());
-            header("HTTP/1.0 500 Internal Server Error");
-            require __DIR__ . '/../views/500.php';
+            error_log("ActualiteController: Erreur index - " . $e->getMessage());
+            require __DIR__ . '/../views/errors/500.php';
         }
     }
 
-    private function extractTitle($text, $maxLength = 50) {
-        $text = strip_tags($text);
-        return mb_substr($text, 0, $maxLength) . (mb_strlen($text) > $maxLength ? '...' : '');
-    }
+    public function show($id) {
+        try {
+            $query = $this->db->prepare("
+                SELECT 
+                    id,
+                    Titre AS title,
+                    image AS image_path,
+                    texte,
+                    Date AS created_at
+                FROM actualiter
+                WHERE id = ?
+            ");
+            $query->execute([$id]);
+            $actualite = $query->fetch(PDO::FETCH_ASSOC);
 
-    private function createExcerpt($text, $maxLength = 150) {
-        $text = strip_tags($text);
-        $text = preg_replace('/\s+/', ' ', $text);
-        return mb_substr($text, 0, $maxLength) . (mb_strlen($text) > $maxLength ? '...' : '');
+            if ($actualite) {
+                $actualite['image_path'] = $this->getImagePath($actualite['image_path']);
+                require __DIR__ . '/../views/actualite.php';
+            } else {
+                header("HTTP/1.0 404 Not Found");
+                require __DIR__ . '/../views/errors/404.php';
+            }
+        } catch (PDOException $e) {
+            error_log("ActualiteController: Erreur show - " . $e->getMessage());
+            header("HTTP/1.0 500 Internal Server Error");
+            require __DIR__ . '/../views/errors/500.php';
+        }
     }
 
     private function getImagePath($imageName) {
-        if (empty($imageName)) return null;
+        if (empty($imageName)) {
+            error_log("ActualiteController: Aucun nom d'image fourni, retour par défaut");
+            return '/Altiris/Assets/Images/logo_Altirys.jpg';
+        }
+
+        $imageName = ltrim($imageName, '/\\');
+        if (stripos($imageName, 'Assets/Images/') === 0) {
+            $imageName = 'Altiris/' . $imageName;
+        }
 
         $possiblePaths = [
-            '/Altiris/root/frontoffice/uploads/',
-            '/Altiris/root/frontoffice/images/',
-            '/uploads/',
-            '/images/'
+            '/Altiris/' . $imageName,
+            '/Altiris/Assets/Images/' . basename($imageName),
+            '/Altiris/assets/images/' . basename($imageName),
+            '/Altiris/root/frontoffice/uploads/' . basename($imageName),
+            $imageName
         ];
 
         foreach ($possiblePaths as $path) {
-            $fullPath = $_SERVER['DOCUMENT_ROOT'] . $path . $imageName;
+            $fullPath = $_SERVER['DOCUMENT_ROOT'] . $path;
             if (file_exists($fullPath)) {
-                return $path . $imageName;
+                error_log("ActualiteController: Image trouvée à - " . $path);
+                return $path;
             }
         }
 
-        return null;
-    }
-
-    private function renderView($data, $view = 'actualite') {
-        extract($data);
-        ob_start();
-        require __DIR__ . '/../views/partials/header.php';
-        require __DIR__ . '/../views/' . $view . '.php';
-        require __DIR__ . '/../views/partials/footer.php';
-        echo ob_get_clean();
+        error_log("ActualiteController: Aucun chemin valide trouvé pour l'image - " . $imageName);
+        return '/Altiris/Assets/Images/logo_Altirys.jpg';
     }
 }

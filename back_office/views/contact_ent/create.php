@@ -1,4 +1,12 @@
 <?php
+ob_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['loggedin']) || !isset($_SESSION['user_id'])) {
+    header("Location: /Altiris/connexion");
+    exit;
+}
 require_once '../../components/header.php';
 require_once dirname(__DIR__, 2) . '/controllers/ContactEntController.php';
 
@@ -9,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $controller->create();
     if ($result === true) {
         $_SESSION['success'] = "Contact ajouté avec succès";
-        header("Location: index.php");
+        header("Location: /Altiris/contact-entreprise");
         exit;
     } else {
         $error = $result;
@@ -50,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <button type="submit" class="btn btn-primary">Enregistrer</button>
-    <a href="index.php" class="btn btn-secondary">Annuler</a>
+    <a href="/Altiris/contact-entreprise" class="btn btn-secondary">Annuler</a>
 </form>
 
 <script>
@@ -71,5 +79,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }, false);
 })();
 </script>
-
-<?php require_once '../../components/footer.php'; ?>

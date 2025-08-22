@@ -1,4 +1,12 @@
 <?php
+ob_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['loggedin']) || !isset($_SESSION['user_id'])) {
+    header("Location: /Altiris/connexion");
+    exit;
+}
 require_once '../../components/header.php';
 require_once dirname(__DIR__, 2) . '/controllers/ActualiterController.php';
 $controller = new ActualiterController();
@@ -28,4 +36,3 @@ $controller->edit($_GET['id'] ?? null);
     </div>
     <button type="submit" class="btn btn-primary">Modifier</button>
 </form>
-<?php require_once '../../components/footer.php'; ?>

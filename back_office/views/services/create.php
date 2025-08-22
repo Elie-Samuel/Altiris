@@ -23,4 +23,3 @@ $controller->create();
     </div>
     <button type="submit" class="btn btn-primary">Créer</button>
 </form>
-<?php require_once '../../components/footer.php'; ?>

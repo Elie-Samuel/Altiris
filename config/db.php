@@ -21,13 +21,11 @@ class Database {
             $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         } catch(PDOException $exception) {
             error_log("Erreur de connexion : " . $exception->getMessage());
-            throw $exception; // Propage l'exception pour une meilleure gestion
+            throw $exception; 
         }
         
         return $this->conn;
     }
 }
-
-// Création de l'instance unique
 $database = new Database();
 $db = $database->getConnection();

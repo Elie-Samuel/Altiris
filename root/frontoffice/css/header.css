@@ -1,0 +1,283 @@
+/* Variables CSS */
+:root {
+    --primary-color: #FF6B35;
+    --secondary-color: #4A90E2;
+    --navbar-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    transition: var(--transition);
+}
+
+/* Navbar */
+.navbar-uf {
+    background: var(--navbar-bg);
+    color: var(--text-primary);
+    box-shadow: var(--navbar-shadow);
+    padding: 1rem 0;
+    transition: var(--transition);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-uf.scrolled {
+    padding: 0.5rem 0;
+}
+
+/* Logo */
+.navbar-uf .navbar-brand .logo-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    box-shadow: 0 0 15px rgba(17, 131, 237, 0.3);
+}
+
+.navbar-uf .navbar-brand .logo-container:hover {
+    transform: scale(1.1);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 20px rgba(255, 132, 18, 0.4);
+}
+
+.navbar-uf .navbar-brand .logo-rounded {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Navigation */
+.navbar-uf .navbar-nav {
+    gap: 0.5rem;
+}
+
+.navbar-uf .nav-link {
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    margin: 0 0.25rem;
+    border-radius: 30px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.navbar-uf .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: var(--transition);
+}
+
+.navbar-uf .nav-link:hover,
+.navbar-uf .nav-link.active {
+    color: var(--text-primary);
+}
+
+.navbar-uf .nav-link:hover::before,
+.navbar-uf .nav-link.active::before {
+    width: 100%;
+}
+
+.navbar-uf .nav-link i {
+    margin-right: 5px;
+    transition: var(--transition);
+}
+
+.navbar-uf .nav-link:hover i {
+    color: var(--secondary-color);
+}
+
+/* Search Zone */
+.search-zone {
+    display: none;
+    margin-left: 2rem;
+}
+
+.search-zone.show {
+    display: block;
+}
+
+.search-input {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+    width: 250px;
+    transition: var(--transition);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border-radius: 10px;
+    margin-top: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+}
+
+.search-result-item {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-result-item:hover {
+    background: rgba(255, 107, 53, 0.1);
+}
+
+.member-name {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.member-role {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Highlight effect for scrolled-to member */
+.highlight {
+    background: rgba(255, 107, 53, 0.1);
+    transition: background 0.5s ease;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    background: var(--gradient);
+    border: none;
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-left: 1rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.4);
+}
+
+/* Mobile */
+@media (max-width: 991.98px) {
+    .navbar-uf .navbar-collapse {
+        background: var(--card-bg);
+        padding: 1rem;
+        border-radius: 0 0 10px 10px;
+        margin-top: 10px;
+        border: 1px solid var(--border-color);
+    }
+    
+    .navbar-uf .nav-link {
+        padding: 0.75rem 1rem;
+        margin: 0.25rem 0;
+    }
+    
+    .search-zone {
+        margin: 1rem 0 0 0;
+        width: 100%;
+    }
+    
+    .search-input {
+        width: 100%;
+    }
+}
+
+/* Toggler */
+.navbar-toggler {
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+}
+
+.navbar-toggler-icon {
+    background-image: none;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-primary);
+    position: relative;
+    transition: var(--transition);
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-primary);
+    left: 0;
+    transition: var(--transition);
+}
+
+.navbar-toggler-icon::before {
+    top: -6px;
+}
+
+.navbar-toggler-icon::after {
+    top: 6px;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-color: transparent;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+/* Content */
+.content-offset {
+    padding-top: 120px;
+    transition: var(--transition);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}

@@ -36,7 +36,7 @@ class ServiceController {
             }
             if ($texte && $image && !$error) {
                 if ($this->model->create($titre, $texte, $image)) {
-                    header("Location: index.php");
+                    header("Location: /Altiris/services");
                     exit;
                 } else {
                     $error = "Erreur lors de la création du service.";
@@ -79,7 +79,7 @@ class ServiceController {
             }
             if ($texte && !$error) {
                 if ($this->model->update($id, $titre, $texte, $image)) {
-                    header("Location: index.php");
+                    header("Location: /Altiris/services");
                     exit;
                 } else {
                     $error = "Erreur lors de la mise à jour du service.";
@@ -99,7 +99,7 @@ class ServiceController {
 
     public function delete($id) {
         if (!isset($id) || !is_numeric($id) || $id <= 0) {
-            header("Location: index.php");
+            header("Location: /Altiris/services");
             exit;
         }
         $service = $this->model->read($id);
@@ -110,7 +110,7 @@ class ServiceController {
             }
         }
         $this->model->delete($id);
-        header("Location: index.php");
+        header("Location: /Altiris/services");
         exit;
     }
 }

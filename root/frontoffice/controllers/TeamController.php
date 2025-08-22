@@ -14,7 +14,6 @@ class TeamController {
     }
     
     public function index() {
-        // Définir BASE_URL si elle n'existe pas
         if (!defined('BASE_URL')) {
             define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/Altiris/');
         }
@@ -22,9 +21,8 @@ class TeamController {
         try {
             $members = $this->membreModel->getAllActiveMembers();
             
-            if (empty($members)) {
-                throw new \Exception("Aucun membre d'équipe trouvé.");
-            }
+            // Débogage
+            error_log("[TeamController] Nombre de membres trouvés : " . count($members));
 
             $data = [
                 'members' => $members,
@@ -34,14 +32,11 @@ class TeamController {
                 ],
                 'scripts' => [
                     BASE_URL . 'assets/root/frontoffice/main.js',
-                    BASE_URL . 'assets/gsap.min.js',
-                    BASE_URL . 'assets/slick.min.js'
+                    BASE_URL . 'assets/gsap.min.js'
                 ],
                 'styles' => [
                     BASE_URL . 'root/frontoffice/css/style.css',
-                    BASE_URL . 'root/frontoffice/css/team.css',
-                    BASE_URL . 'assets/slick.css',
-                    BASE_URL . 'assets/slick-theme.css'
+                    BASE_URL . 'root/frontoffice/css/team.css'
                 ],
                 'base_url' => BASE_URL
             ];

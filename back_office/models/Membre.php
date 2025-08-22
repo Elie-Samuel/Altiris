@@ -18,10 +18,9 @@ class Membre {
     }
 
     public function getAll() {
-        $query = "SELECT id_membre, prenom, nom, email, role, statut, Tel, photo, competce_mbr, lien_facebook, 
-                 DATE_FORMAT(date_creation, '%d/%m/%Y %H:%i') as date_creation 
+        $query = "SELECT id_membre, prenom, nom, email, role, Tel, photo, competce_mbr, lien_facebook 
                  FROM $this->table 
-                 ORDER BY date_creation DESC";
+                 ORDER BY id_membre DESC";
         
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
@@ -29,7 +28,7 @@ class Membre {
     }
 
     public function getById($id) {
-        $query = "SELECT id_membre, prenom, nom, email, role, statut, Tel, photo, competce_mbr, lien_facebook 
+        $query = "SELECT id_membre, prenom, nom, email, role, Tel, photo, competce_mbr, lien_facebook 
                  FROM $this->table 
                  WHERE id_membre = :id";
         
@@ -49,8 +48,8 @@ class Membre {
 
     public function create($data, $photo = null) {
         $query = "INSERT INTO $this->table 
-                 (prenom, nom, email, role, statut, Tel, photo, competce_mbr, lien_facebook, date_creation) 
-                 VALUES (:prenom, :nom, :email, :role, :statut, :tel, :photo, :competce_mbr, :lien_facebook, NOW())";
+                 (prenom, nom, email, role, Tel, photo, competce_mbr, lien_facebook) 
+                 VALUES (:prenom, :nom, :email, :role, :tel, :photo, :competce_mbr, :lien_facebook)";
 
         try {
             $this->conn->beginTransaction();
@@ -61,7 +60,6 @@ class Membre {
             $stmt->bindParam(':nom', $data['nom']);
             $stmt->bindParam(':email', $data['email']);
             $stmt->bindParam(':role', $data['role']);
-            $stmt->bindParam(':statut', $data['statut']);
             
             $tel = !empty($data['Tel']) ? $data['Tel'] : null;
             $stmt->bindParam(':tel', $tel);
@@ -90,7 +88,6 @@ class Membre {
                  nom = :nom, 
                  email = :email, 
                  role = :role, 
-                 statut = :statut, 
                  Tel = :tel, 
                  competce_mbr = :competce_mbr, 
                  lien_facebook = :lien_facebook";
@@ -99,7 +96,7 @@ class Membre {
             $query .= ", photo = :photo";
         }
         
-        $query .= ", date_mise_a_jour = NOW() WHERE id_membre = :id";
+        $query .= " WHERE id_membre = :id";
 
         try {
             $this->conn->beginTransaction();
@@ -110,7 +107,6 @@ class Membre {
             $stmt->bindParam(':nom', $data['nom']);
             $stmt->bindParam(':email', $data['email']);
             $stmt->bindParam(':role', $data['role']);
-            $stmt->bindParam(':statut', $data['statut']);
             
             $tel = !empty($data['Tel']) ? $data['Tel'] : null;
             $stmt->bindParam(':tel', $tel);

@@ -2,108 +2,261 @@
 namespace Altiris\FrontOffice\Controllers;
 
 use Altiris\FrontOffice\Models\TestimonialModel;
+use Altiris\FrontOffice\Models\CompetenceModel;
+use Altiris\FrontOffice\Models\ContactFooterModel;
+use Altiris\FrontOffice\Controllers\BlogController;
 use PDO;
 use PDOException;
 
 class HomeController {
     private $db;
     private $testimonialModel;
-    
+    private $competenceModel;
+    private $contactFooterModel;
+    private $blogController;
+    private $pageTitle;
+
     public function __construct(PDO $db) {
         $this->db = $db;
         $this->testimonialModel = new TestimonialModel($db);
+        $this->competenceModel = new CompetenceModel($db);
+        $this->contactFooterModel = new ContactFooterModel($db);
+        $this->blogController = new BlogController($db);
+        error_log("HomeController: Initialisé avec connexion PDO");
     }
-    
+
+    public function setPageTitle($title) {
+        $this->pageTitle = $title;
+    }
+
     public function index() {
+        error_log("HomeController: index() appelé");
         try {
+            $announcements = $this->testimonialModel->getAllAnnouncements();
+            error_log("HomeController: Annonces récupérées - " . count($announcements) . " éléments");
+
             $data = [
-                'announcements' => $this->testimonialModel->getAllAnnouncements(),
+                'pageTitle' => $this->pageTitle ?? 'ALTIRYS - Votre partenaire digital de confiance',
+                'announcement' => $announcements,
+                'posts' => $this->blogController->getAllPosts(),
                 'actualites' => $this->getActualites(),
-                'services' => $this->getServices()
+                'services' => $this->getServices(),
+                'competences' => $this->getCompetencesWithFallback(),
+                'temoignages' => $this->testimonialModel->getActiveTestimonials(),
+                'altirysInfo' => $this->getAltirysInfo(),
+                'agenceInfo' => $this->getAgenceInfo(),
+                'partenaires' => $this->getPartenaires(),
+                'caracteristiques' => $this->getCaracteristiques()
             ];
+            
+            error_log("HomeController: Données préparées pour la vue - " . json_encode(array_keys($data)));
             $this->renderView($data);
         } catch (PDOException $e) {
-            error_log("Erreur HomeController: " . $e->getMessage());
+            error_log("HomeController: Erreur dans index - " . $e->getMessage());
             $this->renderView([
-                'announcements' => [],
+                'pageTitle' => $this->pageTitle ?? 'ALTIRYS - Votre partenaire digital de confiance',
+                'announcement' => [],
+                'posts' => [],
                 'actualites' => [],
-                'services' => []
+                'services' => [],
+                'competences' => [],
+                'temoignages' => [],
+                'altirysInfo' => [],
+                'agenceInfo' => [],
+                'partenaires' => [],
+                'caracteristiques' => []
             ]);
         }
     }
-    
+
+    private function getPartenaires() {
+        try {
+            $query = $this->db->prepare("SELECT id, logo_partenaire FROM partenaire");
+            $query->execute();
+            $partenaires = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($partenaires as &$partenaire) {
+                $partenaire['image_path'] = $this->getImagePath($partenaire['logo_partenaire'] ?? '');
+            }
+            error_log("HomeController: Partenaires récupérés - " . count($partenaires) . " éléments");
+            return $partenaires;
+        } catch (PDOException $e) {
+            error_log("HomeController: Erreur getPartenaires - " . $e->getMessage());
+            return [
+                ['id' => 1, 'logo_partenaire' => '/Altiris/Assets/Images/logo_Altirys.jpg', 'image_path' => '/Altiris/Assets/Images/logo_Altirys.jpg']
+            ];
+        }
+    }
+
+    private function getCaracteristiques() {
+        try {
+            $query = $this->db->prepare("SELECT id_caract, icon_bootstrap, description FROM caractéristiques");
+            $query->execute();
+            $caracteristiques = $query->fetchAll(PDO::FETCH_ASSOC);
+            error_log("HomeController: Caractéristiques récupérées - " . count($caracteristiques) . " éléments");
+            return $caracteristiques;
+        } catch (PDOException $e) {
+            error_log("HomeController: Erreur getCaracteristiques - " . $e->getMessage());
+            return [
+                ['id_caract' => 1, 'icon_bootstrap' => 'fa-user', 'description' => 'Description par défaut']
+            ];
+        }
+    }
+
     private function getActualites() {
         try {
-            $stmt = $this->db->query("SELECT id, texte, Date as date, image FROM actualiter ORDER BY date DESC LIMIT 3");
-            $actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $query = $this->db->prepare("
+                SELECT 
+                    id,
+                    Titre AS title,
+                    image,
+                    texte AS excerpt,
+                    Date AS created_at
+                FROM actualiter
+                ORDER BY Date DESC
+                LIMIT 3
+            ");
+            $query->execute();
+            $actualites = $query->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach ($actualites as &$actu) {
-                $actu['date_formatee'] = $actu['date'] ? date('d/m/Y', strtotime($actu['date'])) : 'Date non disponible';
-                $actu['titre'] = $this->extractTitle($actu['texte']);
-                $actu['image_path'] = $this->getImagePath($actu['image']);
+            foreach ($actualites as &$actualite) {
+                $actualite['image_path'] = $this->getImagePath($actualite['image'] ?? '');
+                $actualite['category'] = 'technologie';
+                if (strlen($actualite['excerpt']) > 120) {
+                    $actualite['excerpt'] = substr($actualite['excerpt'], 0, 120) . '...';
+                }
             }
-
+            error_log("HomeController: Actualités récupérées - " . count($actualites) . " éléments");
             return $actualites;
         } catch (PDOException $e) {
-            error_log("Erreur getActualites: " . $e->getMessage());
+            error_log("HomeController: Erreur getActualites - " . $e->getMessage());
             return [];
         }
     }
-    
+
+    private function getCompetencesWithFallback() {
+        try {
+            $competences = $this->competenceModel->getAllCompetences();
+            if (empty($competences)) {
+                error_log("HomeController: Aucune compétence trouvée, utilisation du fallback");
+                return [
+                    ['nom' => 'HTML5', 'image_path' => 'html5'],
+                    ['nom' => 'CSS3', 'image_path' => 'css3'],
+                    ['nom' => 'JavaScript', 'image_path' => 'javascript'],
+                    ['nom' => 'PHP', 'image_path' => 'phpunit'],
+                    ['nom' => 'MySQL', 'image_path' => 'mysql']
+                ];
+            }
+            return $competences;
+        } catch (PDOException $e) {
+            error_log("HomeController: Erreur getCompetences - " . $e->getMessage());
+            return [
+                ['nom' => 'HTML5', 'image_path' => 'html5'],
+                ['nom' => 'CSS3', 'image_path' => 'css3'],
+                ['nom' => 'JavaScript', 'image_path' => 'javascript'],
+                ['nom' => 'PHP', 'image_path' => 'phpunit'],
+                ['nom' => 'MySQL', 'image_path' => 'mysql']
+            ];
+        }
+    }
+
     private function getServices() {
         try {
-            $query = $this->db->prepare("SELECT id, titre, texte, image FROM service");
+            $query = $this->db->prepare("SELECT id, titre, texte, image FROM service LIMIT 6");
             $query->execute();
             $services = $query->fetchAll(PDO::FETCH_ASSOC);
-            
+
             foreach ($services as &$service) {
-                $service['image_path'] = $this->getImagePath($service['image']);
+                $service['image_path'] = $this->getImagePath($service['image'] ?? '');
+                if (strlen($service['texte']) > 120) {
+                    $service['texte'] = substr($service['texte'], 0, 120) . '...';
+                }
             }
-            
+            error_log("HomeController: Services récupérés - " . count($services) . " éléments");
             return $services;
         } catch (PDOException $e) {
-            error_log("Erreur getServices: " . $e->getMessage());
+            error_log("HomeController: Erreur getServices - " . $e->getMessage());
             return [];
         }
     }
-    
+
+    private function getAltirysInfo() {
+        try {
+            $stmt = $this->db->query("SELECT mission, vente_boost, analyse, image FROM altirys_info LIMIT 1");
+            $altirysInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($altirysInfo) {
+                $altirysInfo['image_path'] = $this->getImagePath($altirysInfo['image'] ?? '');
+                error_log("HomeController: AltirysInfo récupéré");
+                return $altirysInfo;
+            }
+            error_log("HomeController: Aucun AltirysInfo trouvé");
+            return [];
+        } catch (PDOException $e) {
+            error_log("HomeController: Erreur getAltirysInfo - " . $e->getMessage());
+            return [];
+        }
+    }
+
+    private function getAgenceInfo() {
+        try {
+            $stmt = $this->db->query("SELECT vision, clients_nombre, projets_completes, heures_travail, recompenses_nombre FROM agence_info LIMIT 1");
+            $agenceInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+            error_log("HomeController: AgenceInfo récupéré");
+            return $agenceInfo ?: [];
+        } catch (PDOException $e) {
+            error_log("HomeController: Erreur getAgenceInfo - " . $e->getMessage());
+            return [];
+        }
+    }
+
     private function getImagePath($imageName) {
         if (empty($imageName)) {
-            return null;
+            error_log("HomeController: Aucun nom d'image fourni, retour par défaut");
+            return '/Altiris/Assets/Images/logo_Altirys.jpg';
         }
+
+        $imageName = ltrim($imageName, '/\\');
         
-        // Supprimer "Assets/Images/" du début si présent
-        $imageName = str_replace('Assets/Images/', '', $imageName);
-        
-        $basePath = '/Altiris/root/frontoffice/uploads/';
-        $fullPath = $_SERVER['DOCUMENT_ROOT'] . $basePath . $imageName;
-        
-        if (file_exists($fullPath)) {
-            return $basePath . $imageName;
+        if (stripos($imageName, 'Assets/Images/') === 0) {
+            $imageName = 'Altiris/' . $imageName;
+            error_log("HomeController: Correction du chemin - " . $imageName);
         }
-        
-        // Alternative si l'image est dans un autre dossier
-        $altPath = '/Altiris/Assets/Images/' . $imageName;
-        $altFullPath = $_SERVER['DOCUMENT_ROOT'] . $altPath;
-        
-        if (file_exists($altFullPath)) {
-            return $altPath;
+
+        $possiblePaths = [
+            '/Altiris/' . $imageName,
+            '/Altiris/Assets/Images/' . basename($imageName),
+            '/Altiris/assets/images/' . basename($imageName),
+            '/Altiris/root/frontoffice/uploads/' . basename($imageName),
+            $imageName
+        ];
+
+        foreach ($possiblePaths as $path) {
+            $fullPath = $_SERVER['DOCUMENT_ROOT'] . $path;
+            if (file_exists($fullPath)) {
+                error_log("HomeController: Image trouvée à - " . $path);
+                return $path;
+            }
+            error_log("HomeController: Image non trouvée à - " . $fullPath);
         }
-        
-        return null;
+
+        error_log("HomeController: Aucun chemin valide trouvé pour l'image - " . $imageName);
+        return '/Altiris/Assets/Images/logo_Altirys.jpg';
     }
-    
-    private function extractTitle($text, $maxLength = 50) {
-        $text = strip_tags($text);
-        return mb_substr($text, 0, $maxLength) . (mb_strlen($text) > $maxLength ? '...' : '');
-    }
-    
+
     private function renderView($data) {
         extract($data);
         ob_start();
-        require __DIR__.'/../views/partials/header.php';
-        require __DIR__.'/../views/home.php';
-        require __DIR__.'/../views/partials/footer.php';
-        echo ob_get_clean();
+        $headerPath = __DIR__ . '/../views/partials/header.php';
+        $homePath = __DIR__ . '/../views/home.php';
+        if (!file_exists($headerPath)) {
+            error_log("HomeController: Fichier header.php introuvable à - " . $headerPath);
+        }
+        if (!file_exists($homePath)) {
+            error_log("HomeController: Fichier home.php introuvable à - " . $homePath);
+        }
+        require $headerPath;
+        require $homePath;
+        $output = ob_get_clean();
+        echo $output;
     }
 }

@@ -1,0 +1,83 @@
+<?php
+require_once dirname(__DIR__, 2) . '/config/db.php';
+
+class AproposHist {
+    private $conn;
+    private $table = 'apropos_hist';
+
+    public function __construct() {
+        $database = new Database();
+        $this->conn = $database->getConnection();
+        if (!$this->conn) {
+            throw new Exception("Échec de la connexion à la base de données.");
+        }
+    }
+
+    public function create($titre, $text, $date) {
+        try {
+            $query = "INSERT INTO " . $this->table . " (titre, text, date) 
+                      VALUES (:titre, :text, :date)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':titre', $titre);
+            $stmt->bindParam(':text', $text);
+            $stmt->bindParam(':date', $date);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            error_log("Erreur lors de la création : " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function readAll() {
+        try {
+            $query = "SELECT * FROM " . $this->table . " ORDER BY date DESC";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erreur lors de la lecture de tous : " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function read($id) {
+        try {
+            $query = "SELECT * FROM " . $this->table . " WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erreur lors de la lecture : " . $e->getMessage());
+            return null;
+        }
+    }
+
+    public function update($id, $titre, $text, $date) {
+        try {
+            $query = "UPDATE " . $this->table . " SET titre = :titre, text = :text, date = :date WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':titre', $titre);
+            $stmt->bindParam(':text', $text);
+            $stmt->bindParam(':date', $date);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            error_log("Erreur lors de la mise à jour : " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function delete($id) {
+        try {
+            $query = "DELETE FROM " . $this->table . " WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            error_log("Erreur lors de la suppression : " . $e->getMessage());
+            return false;
+        }
+    }
+}
+?>

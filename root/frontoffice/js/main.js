@@ -174,3 +174,66 @@ document.addEventListener('DOMContentLoaded', function() {
     initTeamSlider();
     initAppointmentModal();
 });
+
+ document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.grid-temoignages');
+            const prevBtn = document.querySelector('.slider-prev');
+            const nextBtn = document.querySelector('.slider-next');
+            const cards = document.querySelectorAll('.carte-temoignage');
+            
+            if (cards.length > 0) {
+                const cardWidth = cards[0].offsetWidth + 30; // Largeur carte + marge
+                let currentIndex = 0;
+                let maxVisibleCards = Math.floor(slider.offsetWidth / cardWidth);
+                let totalCards = cards.length;
+
+                // Fonction pour mettre à jour la position du slider
+                function updateSlider() {
+                    slider.scrollTo({
+                        left: currentIndex * cardWidth,
+                        behavior: 'smooth'
+                    });
+                    updateButtons();
+                }
+
+                // Fonction pour mettre à jour l'état des boutons
+                function updateButtons() {
+                    prevBtn.disabled = currentIndex === 0;
+                    nextBtn.disabled = currentIndex >= totalCards - maxVisibleCards;
+                }
+
+                // Événements pour les boutons
+                prevBtn.addEventListener('click', () => {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateSlider();
+                    }
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    if (currentIndex < totalCards - maxVisibleCards) {
+                        currentIndex++;
+                        updateSlider();
+                    }
+                });
+
+                // Recalculer lors du redimensionnement
+                window.addEventListener('resize', () => {
+                    maxVisibleCards = Math.floor(slider.offsetWidth / cardWidth);
+                    updateButtons();
+                });
+
+                // Initialisation
+                updateButtons();
+
+                // Optionnel: Navigation au clavier
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') prevBtn.click();
+                    if (e.key === 'ArrowRight') nextBtn.click();
+                });
+            } else {
+                // Désactiver les boutons si aucun témoignage
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
+});

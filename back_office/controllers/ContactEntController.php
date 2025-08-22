@@ -60,7 +60,7 @@ class ContactEntController {
 
     public function edit($id) {
         if (!is_numeric($id) || $id <= 0) {
-            header("Location: index.php");
+            header("Location: /Altiris/contact-entreprise");
             exit;
         }
 
@@ -89,7 +89,7 @@ class ContactEntController {
             $result = $this->model->update($id, $data);
             if ($result === true) {
                 $_SESSION['success'] = "Contact mis à jour avec succès";
-                header("Location: index.php");
+                header("Location: /Altiris/contact-entreprise");
                 exit;
             } else {
                 return $result;

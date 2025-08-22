@@ -1,4 +1,12 @@
 <?php
+ob_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['loggedin']) || !isset($_SESSION['user_id'])) {
+    header("Location: /Altiris/connexion");
+    exit;
+}
 require_once '../../components/header.php';
 require_once dirname(__DIR__, 2) . '/controllers/ContactEntController.php';
 
@@ -13,8 +21,6 @@ if (isset($_GET['delete'])) {
 }
 ?>
 
-<link rel="stylesheet" href="/Altiris/back_office/css/style.css">
-
 <h2>Gestion des contacts entreprises</h2>
 
 <?php if (isset($_SESSION['success'])): ?>
@@ -22,7 +28,7 @@ if (isset($_GET['delete'])) {
     <?php unset($_SESSION['success']); ?>
 <?php endif; ?>
 
-<a href="create.php" class="btn btn-primary mb-4">
+<a href="/Altiris/contact-entreprise/ajouter" class="btn btn-primary mb-4">
     <i class="fas fa-plus"></i> Ajouter un contact
 </a>
 
@@ -55,7 +61,7 @@ if (isset($_GET['delete'])) {
                             <label>Date de création :</label> <?= htmlspecialchars($contact['date_creation']) ?>
                         </div>
                         <div class="text-center mt-3">
-                            <a href="edit.php?id=<?= $contact['id_ent'] ?>" class="btn btn-sm btn-warning me-2">
+                            <a href="/Altiris/contact-entreprise/modifier/<?= $contact['id_ent'] ?>" class="btn btn-sm btn-warning me-2">
                                 <i class="fas fa-edit"></i> Modifier
                             </a>
                             <a href="?delete=<?= $contact['id_ent'] ?>" class="btn btn-sm btn-danger"
@@ -69,5 +75,3 @@ if (isset($_GET['delete'])) {
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
-
-<?php require_once '../../components/footer.php'; ?>

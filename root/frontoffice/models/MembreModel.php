@@ -14,9 +14,8 @@ class MembreModel {
     public function getAllActiveMembers() {
         try {
             $query = "SELECT id_membre, prenom, nom, role, photo, Tel, email, lien_facebook, competce_mbr 
-                     FROM membres 
-                     WHERE statut = 'actif' 
-                     ORDER BY nom, prenom";
+                      FROM membres 
+                      ORDER BY nom, prenom";
             
             $stmt = $this->db->prepare($query);
             $stmt->execute();

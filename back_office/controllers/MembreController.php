@@ -8,10 +8,48 @@ class MembreController {
         $this->model = new Membre();
     }
 
-    public function index() {
-        return $this->model->getAll();
+    /**
+     * Récupère la liste des membres avec filtres de recherche et de texte
+     * @param string|null $search Terme de recherche
+     * @param string|null $roleFilter Filtre texte pour le rôle
+     * @return array Liste des membres filtrés
+     */
+    public function getMembres($search = null, $roleFilter = null) {
+        // Récupérer tous les membres
+        $membres = $this->model->getAll();
+
+        // Filtrer par recherche si présente
+        if ($search) {
+            $search = strtolower(trim($search));
+            $membres = array_filter($membres, function($membre) use ($search) {
+                return stripos(strtolower($membre['prenom'] . ' ' . $membre['nom'] . ' ' . $membre['email'] . ' ' . $membre['role']), $search) !== false;
+            });
+        }
+
+        // Filtrer par texte de rôle si présent (recherche partielle)
+        if ($roleFilter) {
+            $roleFilter = strtolower(trim($roleFilter));
+            $membres = array_filter($membres, function($membre) use ($roleFilter) {
+                return $roleFilter === '' || stripos(strtolower($membre['role']), $roleFilter) !== false;
+            });
+        }
+
+        // Réindexer le tableau pour éviter les clés manquantes
+        return array_values($membres);
     }
 
+    /**
+     * Méthode par défaut pour retourner tous les membres (sans filtres)
+     * @return array Liste des membres
+     */
+    public function index() {
+        return $this->getMembres(); // Utilise la nouvelle méthode getMembres sans filtres
+    }
+
+    /**
+     * Crée un nouveau membre
+     * @return mixed Résultat de la création (true, message d'erreur, ou null)
+     */
     public function create() {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             return null;
@@ -68,8 +106,7 @@ class MembreController {
             'prenom' => trim($_POST['prenom']),
             'nom' => trim($_POST['nom']),
             'email' => trim($_POST['email']),
-            'role' => $_POST['role'] ?? 'utilisateur',
-            'statut' => $_POST['statut'] ?? 'actif',
+            'role' => trim($_POST['role'] ?? ''), // Rôle devient un texte libre
             'Tel' => !empty($_POST['Tel']) ? trim($_POST['Tel']) : null,
             'competce_mbr' => !empty($_POST['competce_mbr']) ? trim($_POST['competce_mbr']) : null,
             'lien_facebook' => !empty($_POST['lien_facebook']) ? trim($_POST['lien_facebook']) : null
@@ -87,9 +124,14 @@ class MembreController {
         }
     }
 
+    /**
+     * Modifie un membre existant
+     * @param int $id ID du membre
+     * @return mixed Résultat de la modification (true, message d'erreur, ou données du membre)
+     */
     public function edit($id) {
         if (!is_numeric($id) || $id <= 0) {
-            header("Location: index.php");
+            header("Location: /Altiris/membres");
             exit;
         }
 
@@ -109,8 +151,7 @@ class MembreController {
                 'prenom' => trim($_POST['prenom']),
                 'nom' => trim($_POST['nom']),
                 'email' => trim($_POST['email']),
-                'role' => $_POST['role'] ?? 'utilisateur',
-                'statut' => $_POST['statut'] ?? 'actif',
+                'role' => trim($_POST['role'] ?? ''), // Rôle devient un texte libre
                 'Tel' => !empty($_POST['Tel']) ? trim($_POST['Tel']) : null,
                 'competce_mbr' => !empty($_POST['competce_mbr']) ? trim($_POST['competce_mbr']) : null,
                 'lien_facebook' => !empty($_POST['lien_facebook']) ? trim($_POST['lien_facebook']) : null
@@ -157,12 +198,17 @@ class MembreController {
 
         $membre = $this->model->getById($id);
         if (!$membre) {
-            header("Location: index.php");
+            header("Location: /Altiris/membres");
             exit;
         }
         return $membre;
     }
 
+    /**
+     * Supprime un membre
+     * @param int $id ID du membre
+     * @return bool Succès ou échec de la suppression
+     */
     public function delete($id) {
         if (is_numeric($id) && $id > 0) {
             $membre = $this->model->getById($id);

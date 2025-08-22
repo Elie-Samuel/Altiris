@@ -13,12 +13,14 @@ class Annonce {
         }
     }
 
-    public function create($text, $image) {
+    public function create($titre, $titre1, $text, $image) {
         try {
-            $query = "INSERT INTO " . $this->table . " (text, image) VALUES (:text, :image)";
+            $query = "INSERT INTO " . $this->table . " (titre, titre1, text, image) VALUES (:titre, :titre1, :text, :image)";
             $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':titre', $titre);
+            $stmt->bindParam(':titre1', $titre1);
             $stmt->bindParam(':text', $text);
-            $stmt->bindParam(':image', $image); // Chemin de l'image
+            $stmt->bindParam(':image', $image);
             return $stmt->execute();
         } catch (PDOException $e) {
             error_log("Erreur lors de la création : " . $e->getMessage());
@@ -28,7 +30,7 @@ class Annonce {
 
     public function readAll() {
         try {
-            $query = "SELECT * FROM " . $this->table;
+            $query = "SELECT * FROM " . $this->table . " ORDER BY id DESC";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -51,14 +53,14 @@ class Annonce {
         }
     }
 
-    public function update($id, $text, $image = null) {
+    public function update($id, $titre, $titre1, $text, $image) {
         try {
-            $query = $image ? 
-                "UPDATE " . $this->table . " SET text = :text, image = :image WHERE id = :id" :
-                "UPDATE " . $this->table . " SET text = :text WHERE id = :id";
+            $query = "UPDATE " . $this->table . " SET titre = :titre, titre1 = :titre1, text = :text, image = :image WHERE id = :id";
             $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':titre', $titre);
+            $stmt->bindParam(':titre1', $titre1);
             $stmt->bindParam(':text', $text);
-            if ($image) $stmt->bindParam(':image', $image);
+            $stmt->bindParam(':image', $image);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             return $stmt->execute();
         } catch (PDOException $e) {

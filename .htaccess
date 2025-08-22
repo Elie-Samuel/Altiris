@@ -1,4 +1,161 @@
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /Altiris/
+
+    # Ne pas réécrire les requêtes pour les fichiers ou dossiers existants
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Root route (pour /Altiris/)
+    RewriteRule ^$ root/index.php [L,QSA]
+
+    # Suppression du trailing slash
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ $1 [R=301,L]
+
+    # Routes front-office
+    RewriteRule ^home/?$ root/index.php?page=home [L,QSA]
+    RewriteRule ^apropos/?$ root/index.php?page=apropos [L,QSA]
+    RewriteRule ^about/?$ root/index.php?page=apropos [L,QSA]
+    RewriteRule ^team/?$ root/index.php?page=team [L,QSA]
+    RewriteRule ^equipe/?$ root/index.php?page=team [L,QSA]
+    RewriteRule ^contact/?$ root/index.php?page=contact [L,QSA]
+    RewriteRule ^blog/?$ root/index.php?page=blog [L,QSA]
+    RewriteRule ^actualite/?$ root/index.php?page=blog [L,QSA]
+    RewriteRule ^actualites/?$ root/frontoffice/views/Actualites.php [L,QSA]
+    RewriteRule ^actualites/?$ root/frontoffice/views/Actualites.php [L,QSA]
+    RewriteRule ^actualites/?$ root/frontoffice/views/Actualites.php [L,QSA]
+    RewriteRule ^lire_article/([0-9]+)/?$ root/index.php?page=blog&id=$1 [L,QSA]
+    RewriteRule ^blog/([0-9]+)/?$ root/index.php?page=blog&id=$1 [L,QSA]
+    RewriteRule ^article/([0-9]+)/?$ root/index.php?page=blog&id=$1 [L,QSA]
+    RewriteRule ^service/([0-9]+)/?$ root/index.php?page=service&id=$1 [L,QSA]
+    RewriteRule ^actualite/([0-9]+)/?$ root/frontoffice/views/actualite_detail.php?id=$1 [L,QSA]
+    RewriteRule ^temoignage/([0-9]+)/?$ root/frontoffice/views/temoignage_detail.php?id=$1 [L,QSA]
+    
+    # Routes pour les pages détaillées
+    RewriteRule ^blog-detail/([0-9]+)/?$ root/frontoffice/views/blog_detail.php?id=$1 [L,QSA]
+    RewriteRule ^service-detail/([0-9]+)/?$ root/frontoffice/views/service_detail.php?id=$1 [L,QSA]
+    RewriteRule ^actualite-detail/([0-9]+)/?$ root/frontoffice/views/actualite_detail.php?id=$1 [L,QSA]
+
+
+    # Route pour la recherche
+    RewriteRule ^root/frontoffice/search_members\.php$ root/frontoffice/search_members.php [L,QSA]
+
+    # Routes back-office
+    RewriteRule ^connexion$ back_office/login.php [L,QSA]
+    RewriteRule ^forgot-password$ back_office/forgot-password.php [L,QSA]
+    RewriteRule ^contact-admin$ back_office/contact-admin.php [L,QSA]
+    RewriteRule ^change-password$ back_office/change-password.php [L,QSA]
+    RewriteRule ^accueil$ back_office/views/dashboard/index.php [L,QSA]
+    RewriteRule ^tableau-de-bord$ back_office/views/dashboard/index.php [L,QSA]
+    RewriteRule ^annonces$ back_office/views/annonces/index.php [L,QSA]
+    RewriteRule ^annonces/ajouter$ back_office/views/annonces/create.php [L,QSA]
+    RewriteRule ^annonces/modifier/([0-9]+)$ back_office/views/annonces/edit.php?id=$1 [L,QSA]
+    RewriteRule ^annonces/supprimer/([0-9]+)$ back_office/views/annonces/delete.php?id=$1 [L,QSA]
+    RewriteRule ^information-altirys$ back_office/views/altirys_info/index.php [L,QSA]
+    RewriteRule ^information-altirys/ajouter$ back_office/views/altirys_info/create.php [L,QSA]
+    RewriteRule ^information-altirys/modifier/([0-9]+)$ back_office/views/altirys_info/edit.php?id=$1 [L,QSA]
+    RewriteRule ^services$ back_office/views/services/index.php [L,QSA]
+    RewriteRule ^services/ajouter$ back_office/views/services/create.php [L,QSA]
+    RewriteRule ^services/modifier/([0-9]+)$ back_office/views/services/edit.php?id=$1 [L,QSA]
+    RewriteRule ^actualites$ back_office/views/actualiters/index.php [L,QSA]
+    RewriteRule ^actualites/ajouter$ back_office/views/actualiters/create.php [L,QSA]
+    RewriteRule ^actualites/modifier/([0-9]+)$ back_office/views/actualiters/edit.php?id=$1 [L,QSA]
+    RewriteRule ^temoignages$ back_office/views/temoignages/index.php [L,QSA]
+    RewriteRule ^temoignages/ajouter$ back_office/views/temoignages/create.php [L,QSA]
+    RewriteRule ^temoignages/modifier/([0-9]+)$ back_office/views/temoignages/edit.php?id=$1 [L,QSA]
+    RewriteRule ^competences$ back_office/views/competences/index.php [L,QSA]
+    RewriteRule ^competences/ajouter$ back_office/views/competences/create.php [L,QSA]
+    RewriteRule ^competences/modifier/([0-9]+)$ back_office/views/competences/edit.php?id=$1 [L,QSA]
+    RewriteRule ^membres$ back_office/views/membres/index.php [L,QSA]
+    RewriteRule ^membres/ajouter$ back_office/views/membres/create.php [L,QSA]
+    RewriteRule ^membres/modifier/([0-9]+)$ back_office/views/membres/edit.php?id=$1 [L,QSA]
+    RewriteRule ^apropos-historique$ back_office/views/apropos_hist/index.php [L,QSA]
+    RewriteRule ^apropos-historique/ajouter$ back_office/views/apropos_hist/create.php [L,QSA]
+    RewriteRule ^apropos-historique/modifier/([0-9]+)$ back_office/views/apropos_hist/edit.php?id=$1 [L,QSA]
+    RewriteRule ^apropos-description$ back_office/views/apropos_desc/index.php [L,QSA]
+    RewriteRule ^apropos-description/ajouter$ back_office/views/apropos_desc/create.php [L,QSA]
+    RewriteRule ^apropos-description/modifier/([0-9]+)$ back_office/views/apropos_desc/edit.php?id=$1 [L,QSA]
+    RewriteRule ^apropos-mission$ back_office/views/apropos_mission/index.php [L,QSA]
+    RewriteRule ^apropos-mission/ajouter$ back_office/views/apropos_mission/create.php [L,QSA]
+    RewriteRule ^apropos-mission/modifier/([0-9]+)$ back_office/views/apropos_mission/edit.php?id=$1 [L,QSA]
+    RewriteRule ^apropos-valeur$ back_office/views/apropos_valeur/index.php [L,QSA]
+    RewriteRule ^apropos-valeur/ajouter$ back_office/views/apropos_valeur/create.php [L,QSA]
+    RewriteRule ^apropos-valeur/modifier/([0-9]+)$ back_office/views/apropos_valeur/edit.php?id=$1 [L,QSA]
+    RewriteRule ^contact-entreprise$ back_office/views/contact_ent/index.php [L,QSA]
+    RewriteRule ^contact-entreprise/ajouter$ back_office/views/contact_ent/create.php [L,QSA]
+    RewriteRule ^contact-entreprise/modifier/([0-9]+)$ back_office/views/contact_ent/edit.php?id=$1 [L,QSA]
+    RewriteRule ^rendez-vous$ back_office/views/contacte/index.php [L,QSA]
+    RewriteRule ^rendez-vous/repondre/([0-9]+)$ back_office/views/contacte/edit.php?id=$1 [L,QSA]
+    RewriteRule ^articles-blog$ back_office/views/blog_posts/index.php [L,QSA]
+    RewriteRule ^articles-blog/ajouter$ back_office/views/blog_posts/create.php [L,QSA]
+    RewriteRule ^articles-blog/modifier/([0-9]+)$ back_office/views/blog_posts/edit.php?id=$1 [L,QSA]
+    RewriteRule ^description-blog$ back_office/views/blog_desc/index.php [L,QSA]
+    RewriteRule ^description-blog/ajouter$ back_office/views/blog_desc/create.php [L,QSA]
+    RewriteRule ^description-blog/modifier/([0-9]+)$ back_office/views/blog_desc/edit.php?id=$1 [L,QSA]
+    RewriteRule ^pages-legales$ back_office/views/legal_pages/index.php [L,QSA]
+    RewriteRule ^pages-legales/ajouter$ back_office/views/legal_pages/create.php [L,QSA]
+    RewriteRule ^pages-legales/modifier/([0-9]+)$ back_office/views/legal_pages/edit.php?id=$1 [L,QSA]
+    RewriteRule ^liens-sociaux$ back_office/views/social_links/index.php [L,QSA]
+    RewriteRule ^liens-sociaux/ajouter$ back_office/views/social_links/create.php [L,QSA]
+    RewriteRule ^liens-sociaux/modifier/([0-9]+)$ back_office/views/social_links/edit.php?id=$1 [L,QSA]
+    RewriteRule ^notifications$ back_office/views/notifications/index.php [L,QSA]
+    RewriteRule ^parametres$ back_office/views/parametres/index.php [L,QSA]
+    RewriteRule ^utilisateurs$ back_office/views/utilisateurs/index.php [L,QSA]
+    RewriteRule ^utilisateurs/ajouter$ back_office/views/utilisateurs/create.php [L,QSA]
+    RewriteRule ^utilisateurs/modifier/([0-9]+)$ back_office/views/utilisateurs/edit.php?id=$1 [L,QSA]
+    RewriteRule ^profil$ back_office/views/profile.php [L,QSA]
+    RewriteRule ^profil/([0-9]+)$ back_office/views/profile.php?id=$1 [L,QSA]
+    RewriteRule ^deconnexion$ back_office/logout.php [L,QSA]
+
+    # Fichiers statiques - ne pas réécrire
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Gestion des erreurs
+    ErrorDocument 404 /Altiris/root/frontoffice/views/errors/404.php
+    ErrorDocument 500 /Altiris/root/frontoffice/views/errors/500.php
+</IfModule>
+
+# Sécurité
+RewriteCond %{THE_REQUEST} /([^?]*)\?[^?\s]*\.php[?\s&] [NC]
+RewriteRule ^ /%1? [R=301,L]
+
+# Protection des fichiers sensibles
+<Files ~ "^\.">
+    Require all denied
+</Files>
+
+<Files ~ "\.php$">
+    <RequireAll>
+        Require all granted
+    </RequireAll>
+</Files>
+
+# Cache et compression
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Support UTF-8
+AddDefaultCharset UTF-8

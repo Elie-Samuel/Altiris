@@ -1,9 +1,29 @@
 <?php
+ob_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['loggedin']) || !isset($_SESSION['user_id'])) {
+    header("Location: /Altiris/login.php");
+    exit;
+}
 require_once '../../components/header.php';
 require_once dirname(__DIR__, 2) . '/controllers/ServiceController.php';
 $controller = new ServiceController();
 $id = $_GET['id'] ?? null;
 
+if (!$id || !is_numeric($id) || $id <= 0) {
+    header("Location: /Altiris/services");
+    exit;
+}
+
+require_once '../../components/header.php';
+$controller->edit($id);
+global $service;
+if (!$service) {
+    header("Location: /Altiris/services");
+    exit;
+}
 // Charger les données initiales ou modifiées via edit()
 $controller->edit($id);
 ?>
@@ -31,4 +51,3 @@ $controller->edit($id);
     </div>
     <button type="submit" class="btn btn-primary">Modifier</button>
 </form>
-<?php require_once '../../components/footer.php'; ?>
